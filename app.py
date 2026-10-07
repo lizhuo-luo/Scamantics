@@ -207,7 +207,7 @@ def header_html(status: str, ok: bool) -> str:
     return (
         "<div class='sc-header'><div class='sc-brand'>"
         "<div class='sc-logo'>S</div><div><div class='sc-title'>Scamantics</div>"
-        "<div class='sc-tagline'>Explainable scam manipulation analysis</div></div></div>"
+        "<div class='sc-tagline'>Explains how a message tries to manipulate you. Not a scam detector.</div></div></div>"
         f"<div class='sc-status'><span class='sc-status-dot {dot}'></span>{_esc(status)}</div></div>"
     )
 

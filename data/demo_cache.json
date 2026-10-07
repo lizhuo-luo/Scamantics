@@ -2411,5 +2411,703 @@
     "provider": "ollama",
     "model": "gemma4:12b",
     "error": null
+  },
+  "Barclays: Did you attempt a payment of £249.99 to Currys today? Reply Y if yes or N if no. We will never ask you to move money or share your PIN.": {
+    "message": "Barclays: Did you attempt a payment of £249.99 to Currys today? Reply Y if yes or N if no. We will never ask you to move money or share your PIN.",
+    "is_suspicious": false,
+    "summary": "This message appears to be a standard automated verification check from a bank. It does not contain high-pressure tactics or suspicious demands.",
+    "tactics": [],
+    "spans": [],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Your one-time passcode is 731 904. Do not share this code with anyone, including bank staff. If you did not request it, call the number on the back of your card.": {
+    "message": "Your one-time passcode is 731 904. Do not share this code with anyone, including bank staff. If you did not request it, call the number on the back of your card.",
+    "is_suspicious": false,
+    "summary": "This message appears to be a standard automated security notification. It includes a warning against sharing codes, but it also provides a safe way to contact the bank directly.",
+    "tactics": [],
+    "spans": [],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "DPD: Your parcel from ASOS is arriving today between 14:10 and 15:10. No action needed. If you're out, we'll leave it with a neighbour or in your safe place.": {
+    "message": "DPD: Your parcel from ASOS is arriving today between 14:10 and 15:10. No action needed. If you're out, we'll leave it with a neighbour or in your safe place.",
+    "is_suspicious": false,
+    "summary": "This message appears to be a standard delivery notification and does not contain any manipulative tactics or high-pressure language.",
+    "tactics": [],
+    "spans": [],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Hi, this is Maria from the letting agency. Your tenancy renewal paperwork is due back by 31 October. No rush, but let me know if you have any questions about the terms.": {
+    "message": "Hi, this is Maria from the letting agency. Your tenancy renewal paperwork is due back by 31 October. No rush, but let me know if you have any questions about the terms.",
+    "is_suspicious": false,
+    "summary": "This message appears to be a standard administrative notification without high-pressure tactics or manipulative language.",
+    "tactics": [],
+    "spans": [],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Thames Water: Planned maintenance means your water may be off between 09:00 and 13:00 on Wednesday 15 October. We apologise for the inconvenience.": {
+    "message": "Thames Water: Planned maintenance means your water may be off between 09:00 and 13:00 on Wednesday 15 October. We apologise for the inconvenience.",
+    "is_suspicious": false,
+    "summary": "This message appears to be a standard service notification and does not contain any manipulative tactics.",
+    "tactics": [],
+    "spans": [],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Your council tax instalment of £142 was not collected because the Direct Debit was declined. You can pay online, by phone, or wait for the next scheduled collection. See your account for details.": {
+    "message": "Your council tax instalment of £142 was not collected because the Direct Debit was declined. You can pay online, by phone, or wait for the next scheduled collection. See your account for details.",
+    "is_suspicious": false,
+    "summary": "This message appears to be a standard notification regarding a payment issue and provides multiple options for how to proceed.",
+    "tactics": [],
+    "spans": [],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "NHS: Your flu vaccination is now available. Book at your GP practice or any participating pharmacy. There is no charge for eligible patients.": {
+    "message": "NHS: Your flu vaccination is now available. Book at your GP practice or any participating pharmacy. There is no charge for eligible patients.",
+    "is_suspicious": false,
+    "summary": "This message appears to be a standard public health notification with no clear signs of manipulation or pressure.",
+    "tactics": [],
+    "spans": [],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Hey it's Tom, lost my phone on the train yesterday so texting from Jess's. Can you resend me the address for Saturday? Not urgent.": {
+    "message": "Hey it's Tom, lost my phone on the train yesterday so texting from Jess's. Can you resend me the address for Saturday? Not urgent.",
+    "is_suspicious": false,
+    "summary": "This message appears to be a personal communication without any clear signs of manipulation or pressure.",
+    "tactics": [],
+    "spans": [],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Cancer Research UK: Thank you for your monthly gift. Your support funds life-saving research. To change or cancel your donation at any time, visit your supporter account.": {
+    "message": "Cancer Research UK: Thank you for your monthly gift. Your support funds life-saving research. To change or cancel your donation at any time, visit your supporter account.",
+    "is_suspicious": false,
+    "summary": "This message appears to be a standard transactional notification from a charity and does not contain manipulative tactics.",
+    "tactics": [],
+    "spans": [],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Monzo: We've blocked a card payment of £89 at a merchant in Lagos that looked unusual. If this was you, you can approve it in the app. If not, freeze your card in the app.": {
+    "message": "Monzo: We've blocked a card payment of £89 at a merchant in Lagos that looked unusual. If this was you, you can approve it in the app. If not, freeze your card in the app.",
+    "is_suspicious": false,
+    "summary": "This message appears to be a standard automated notification from a banking app regarding a specific transaction.",
+    "tactics": [],
+    "spans": [],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Reminder from the HR team: open enrolment for health benefits closes on 30 November. Changes made after that date will take effect next year.": {
+    "message": "Reminder from the HR team: open enrolment for health benefits closes on 30 November. Changes made after that date will take effect next year.",
+    "is_suspicious": false,
+    "summary": "This message appears to be a standard internal corporate notification regarding a deadline for benefits enrollment.",
+    "tactics": [],
+    "spans": [],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "This is a message from the Metropolitan Police. Your report (ref 4521/0923) has been received. An officer may contact you within 10 working days. You can check progress online.": {
+    "message": "This is a message from the Metropolitan Police. Your report (ref 4521/0923) has been received. An officer may contact you within 10 working days. You can check progress online.",
+    "is_suspicious": false,
+    "summary": "This message appears to be a standard administrative notification and does not contain high-pressure tactics or suspicious demands.",
+    "tactics": [],
+    "spans": [],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Your Netflix payment didn't go through. Update your payment method in the app at your convenience to keep watching. We'll try again in a few days.": {
+    "message": "Your Netflix payment didn't go through. Update your payment method in the app at your convenience to keep watching. We'll try again in a few days.",
+    "is_suspicious": false,
+    "summary": "This message appears to be a standard notification without high-pressure tactics or suspicious demands.",
+    "tactics": [],
+    "spans": [],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Hi Dad, can you lend me £40 until payday on Friday? Rent came out early. I'll send it back as soon as I'm paid, promise.": {
+    "message": "Hi Dad, can you lend me £40 until payday on Friday? Rent came out early. I'll send it back as soon as I'm paid, promise.",
+    "is_suspicious": false,
+    "summary": "This message appears to be a personal request between family members and does not contain common manipulation tactics.",
+    "tactics": [],
+    "spans": [],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "HMRC: You have a new message in your Personal Tax Account. Sign in through GOV.UK to read it. We will never include a link in a text message.": {
+    "message": "HMRC: You have a new message in your Personal Tax Account. Sign in through GOV.UK to read it. We will never include a link in a text message.",
+    "is_suspicious": false,
+    "summary": "This message appears to be a standard notification. It actually includes a security warning advising the user not to click links, which is a common practice for official government communications.",
+    "tactics": [],
+    "spans": [],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Hi, is this Rachel? Sorry, I think I have the wrong number. You seem nice though, how is your week going?": {
+    "message": "Hi, is this Rachel? Sorry, I think I have the wrong number. You seem nice though, how is your week going?",
+    "is_suspicious": true,
+    "summary": "This message uses a friendly, casual approach to start a conversation with a stranger, often as a way to build rapport before a solicitation.",
+    "tactics": [
+      {
+        "label": "impersonation",
+        "evidence": [
+          "Hi, is this Rachel?"
+        ],
+        "explanation": "The sender pretends to be looking for a specific person to create a sense of familiarity or to see if the number is active.",
+        "confidence": 0.8
+      }
+    ],
+    "spans": [
+      {
+        "label": "impersonation",
+        "text": "Hi, is this Rachel?",
+        "start": 0,
+        "end": 19
+      }
+    ],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Thanks for applying. The role is fully remote and the pay is $38 an hour. There is a short training period during which we will send you a cheque to buy a laptop from our supplier; you keep the balance as a welcome bonus.": {
+    "message": "Thanks for applying. The role is fully remote and the pay is $38 an hour. There is a short training period during which we will send you a cheque to buy a laptop from our supplier; you keep the balance as a welcome bonus.",
+    "is_suspicious": true,
+    "summary": "The message uses a high-paying job offer and a 'bonus' to make a suspicious payment scheme seem like a benefit to the worker.",
+    "tactics": [
+      {
+        "label": "reward",
+        "evidence": [
+          "you keep the balance as a welcome bonus"
+        ],
+        "explanation": "This offers a financial incentive to make the reader feel like they are gaining something extra, which can distract them from noticing the unusual request for a cheque.",
+        "confidence": 0.9
+      }
+    ],
+    "spans": [
+      {
+        "label": "reward",
+        "text": "you keep the balance as a welcome bonus",
+        "start": 181,
+        "end": 220
+      }
+    ],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "I have been investing with a small fund for the past year and the results have been steady. I do not usually recommend things, but if you ever want to see my statements, I would be happy to share them. It has changed my life.": {
+    "message": "I have been investing with a small fund for the past year and the results have been steady. I do not usually recommend things, but if you ever want to see my statements, I would be happy to share them. It has changed my life.",
+    "is_suspicious": true,
+    "summary": "The message uses a personal success story and a subtle offer of 'proof' to build trust and entice you into a potential investment scheme.",
+    "tactics": [
+      {
+        "label": "reward",
+        "evidence": [
+          "It has changed my life."
+        ],
+        "explanation": "This phrase uses a high-emotion success story to make the opportunity seem life-changing and highly desirable.",
+        "confidence": 0.8
+      }
+    ],
+    "spans": [
+      {
+        "label": "reward",
+        "text": "It has changed my life.",
+        "start": 202,
+        "end": 225
+      }
+    ],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Good morning. We are completing a routine review of your account and need to reconfirm a few details. There is no problem at this stage. Please reply with your full name, date of birth and the last four digits of your card so we can proceed.": {
+    "message": "Good morning. We are completing a routine review of your account and need to reconfirm a few details. There is no problem at this stage. Please reply with your full name, date of birth and the last four digits of your card so we can proceed.",
+    "is_suspicious": true,
+    "summary": "The message uses a calm, official-sounding tone to request sensitive personal information under the guise of a routine check.",
+    "tactics": [
+      {
+        "label": "impersonation",
+        "evidence": [
+          "routine review of your account"
+        ],
+        "explanation": "By claiming to perform a 'routine review,' the message tries to sound like an official representative of a bank or service provider to build trust.",
+        "confidence": 0.8
+      }
+    ],
+    "spans": [
+      {
+        "label": "impersonation",
+        "text": "routine review of your account",
+        "start": 34,
+        "end": 64
+      }
+    ],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Hi love, I know we have not met in person yet, but I think about you every day. My contract here ends soon and I want to visit. The agency needs a small deposit for the flight paperwork. Would you be able to help with that?": {
+    "message": "Hi love, I know we have not met in person yet, but I think about you every day. My contract here ends soon and I want to visit. The agency needs a small deposit for the flight paperwork. Would you be able to help with that?",
+    "is_suspicious": true,
+    "summary": "This message uses a romantic persona to build a sense of intimacy and then asks for money for a specific, urgent-sounding reason.",
+    "tactics": [
+      {
+        "label": "impersonation",
+        "evidence": [
+          "Hi love",
+          "I think about you every day"
+        ],
+        "explanation": "The message uses intimate language to create a false sense of a personal relationship or romantic connection with the reader.",
+        "confidence": 0.9
+      },
+      {
+        "label": "reward",
+        "evidence": [
+          "I want to visit"
+        ],
+        "explanation": "The promise of a physical meeting or a romantic relationship is used as an incentive to get the reader to provide financial help.",
+        "confidence": 0.8
+      }
+    ],
+    "spans": [
+      {
+        "label": "impersonation",
+        "text": "Hi love",
+        "start": 0,
+        "end": 7
+      },
+      {
+        "label": "impersonation",
+        "text": "I think about you every day",
+        "start": 51,
+        "end": 78
+      },
+      {
+        "label": "reward",
+        "text": "I want to visit",
+        "start": 111,
+        "end": 126
+      }
+    ],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "You have been pre-approved for a personal loan of up to £15,000 at 3.1% APR regardless of credit history. To receive the funds, a one-time processing fee of £95 is payable in advance.": {
+    "message": "You have been pre-approved for a personal loan of up to £15,000 at 3.1% APR regardless of credit history. To receive the funds, a one-time processing fee of £95 is payable in advance.",
+    "is_suspicious": true,
+    "summary": "This message uses the promise of easy money and a high loan amount to entice you into paying a small upfront fee.",
+    "tactics": [
+      {
+        "label": "reward",
+        "evidence": [
+          "pre-approved for a personal loan of up to £15,000",
+          "regardless of credit history"
+        ],
+        "explanation": "By offering a large sum of money and suggesting it is easy to get regardless of your financial history, the message tries to make the offer seem irresistible.",
+        "confidence": 0.9
+      }
+    ],
+    "spans": [
+      {
+        "label": "reward",
+        "text": "pre-approved for a personal loan of up to £15,000",
+        "start": 14,
+        "end": 63
+      },
+      {
+        "label": "reward",
+        "text": "regardless of credit history",
+        "start": 76,
+        "end": 104
+      }
+    ],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Hello, I am reaching out on behalf of a well-known publisher. We would like to feature your business in our next edition. The listing is complimentary; only a modest artwork fee applies.": {
+    "message": "Hello, I am reaching out on behalf of a well-known publisher. We would like to feature your business in our next edition. The listing is complimentary; only a modest artwork fee applies.",
+    "is_suspicious": true,
+    "summary": "The message uses a professional-sounding persona to offer a business opportunity that requires a small payment to 'unlock' a larger benefit.",
+    "tactics": [
+      {
+        "label": "impersonation",
+        "evidence": [
+          "on behalf of a well-known publisher"
+        ],
+        "explanation": "By claiming to represent a 'well-known' entity, the sender tries to build instant trust and authority to make their request seem more legitimate.",
+        "confidence": 0.8
+      },
+      {
+        "label": "reward",
+        "evidence": [
+          "The listing is complimentary; only a modest artwork fee applies."
+        ],
+        "explanation": "This frames the interaction as a benefit (a free listing) while subtly nudging the reader to pay a small fee to participate in the offer.",
+        "confidence": 0.8
+      }
+    ],
+    "spans": [
+      {
+        "label": "impersonation",
+        "text": "on behalf of a well-known publisher",
+        "start": 25,
+        "end": 60
+      },
+      {
+        "label": "reward",
+        "text": "The listing is complimentary; only a modest artwork fee applies.",
+        "start": 122,
+        "end": 186
+      }
+    ],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "I noticed we both follow the same crypto community. I run a small group where we share entries. Most members made back their first month's fee in a week or two. Happy to add you if you are interested, no pressure.": {
+    "message": "I noticed we both follow the same crypto community. I run a small group where we share entries. Most members made back their first month's fee in a week or two. Happy to add you if you are interested, no pressure.",
+    "is_suspicious": true,
+    "summary": "The message uses a common tactic of promising quick financial gains to entice you into joining a private group.",
+    "tactics": [
+      {
+        "label": "reward",
+        "evidence": [
+          "Most members made back their first month's fee in a week or two."
+        ],
+        "explanation": "This promises a quick return on investment to make the offer seem financially attractive and enticing.",
+        "confidence": 0.9
+      },
+      {
+        "label": "impersonation",
+        "evidence": [
+          "I noticed we both follow the same crypto community."
+        ],
+        "explanation": "The sender claims a shared connection or common interest to build a false sense of trust and familiarity.",
+        "confidence": 0.8
+      }
+    ],
+    "spans": [
+      {
+        "label": "impersonation",
+        "text": "I noticed we both follow the same crypto community.",
+        "start": 0,
+        "end": 51
+      },
+      {
+        "label": "reward",
+        "text": "Most members made back their first month's fee in a week or two.",
+        "start": 96,
+        "end": 160
+      }
+    ],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Hi Grandad, it's Ollie. I'm okay but I've had a bit of trouble and I'd rather explain in person. Could you pop some money into this account for now? I'd prefer Mum didn't know yet.": {
+    "message": "Hi Grandad, it's Ollie. I'm okay but I've had a bit of trouble and I'd rather explain in person. Could you pop some money into this account for now? I'd prefer Mum didn't know yet.",
+    "is_suspicious": true,
+    "summary": "This message uses a familiar identity and a request for secrecy to create a sense of personal obligation and urgency.",
+    "tactics": [
+      {
+        "label": "impersonation",
+        "evidence": [
+          "Hi Grandad, it's Ollie."
+        ],
+        "explanation": "The message pretends to be a family member to build immediate trust and lower your guard.",
+        "confidence": 0.9
+      },
+      {
+        "label": "isolation",
+        "evidence": [
+          "I'd prefer Mum didn't know yet."
+        ],
+        "explanation": "By asking you to keep the situation a secret from other family members, it prevents you from seeking a second opinion or verifying the story.",
+        "confidence": 0.9
+      }
+    ],
+    "spans": [
+      {
+        "label": "impersonation",
+        "text": "Hi Grandad, it's Ollie.",
+        "start": 0,
+        "end": 23
+      },
+      {
+        "label": "isolation",
+        "text": "I'd prefer Mum didn't know yet.",
+        "start": 149,
+        "end": 180
+      }
+    ],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Dear homeowner, our records indicate you may be eligible for a government-backed insulation grant. Eligibility is limited to certain postcodes. A surveyor can visit this week to confirm; a refundable booking deposit secures the slot.": {
+    "message": "Dear homeowner, our records indicate you may be eligible for a government-backed insulation grant. Eligibility is limited to certain postcodes. A surveyor can visit this week to confirm; a refundable booking deposit secures the slot.",
+    "is_suspicious": true,
+    "summary": "The message uses a government-backed offer to create a sense of opportunity while creating a sense of time pressure to get you to pay a deposit.",
+    "tactics": [
+      {
+        "label": "impersonation",
+        "evidence": [
+          "government-backed insulation grant"
+        ],
+        "explanation": "By mentioning a 'government-backed' program, the message tries to gain trust by associating the offer with an official authority.",
+        "confidence": 0.8
+      },
+      {
+        "label": "urgency",
+        "evidence": [
+          "A surveyor can visit this week"
+        ],
+        "explanation": "This creates a limited timeframe, encouraging the reader to act quickly to secure a spot before the week ends.",
+        "confidence": 0.8
+      },
+      {
+        "label": "reward",
+        "evidence": [
+          "eligible for a government-backed insulation grant"
+        ],
+        "explanation": "The offer of a grant acts as an incentive to get the reader to engage with the service and provide a deposit.",
+        "confidence": 0.9
+      }
+    ],
+    "spans": [
+      {
+        "label": "reward",
+        "text": "eligible for a government-backed insulation grant",
+        "start": 48,
+        "end": 97
+      },
+      {
+        "label": "impersonation",
+        "text": "government-backed insulation grant",
+        "start": 63,
+        "end": 97
+      },
+      {
+        "label": "urgency",
+        "text": "A surveyor can visit this week",
+        "start": 144,
+        "end": 174
+      }
+    ],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Your recent review of the Harbour Hotel was appreciated. As a thank you we would like to offer a complimentary two-night stay. A small booking fee is required to hold the room and is refunded on arrival.": {
+    "message": "Your recent review of the Harbour Hotel was appreciated. As a thank you we would like to offer a complimentary two-night stay. A small booking fee is required to hold the room and is refunded on arrival.",
+    "is_suspicious": true,
+    "summary": "The message uses a reward to entice you into paying a small fee, which is a common way to gather payment information or initiate a fraudulent transaction.",
+    "tactics": [
+      {
+        "label": "reward",
+        "evidence": [
+          "offer a complimentary two-night stay"
+        ],
+        "explanation": "This offers a high-value prize to make the offer seem attractive and encourage the reader to engage with the sender.",
+        "confidence": 0.9
+      }
+    ],
+    "spans": [
+      {
+        "label": "reward",
+        "text": "offer a complimentary two-night stay",
+        "start": 89,
+        "end": 125
+      }
+    ],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "We are a recovery firm that specialises in retrieving funds lost to online fraud. Our records show you may be eligible to recover a previous loss. There is no upfront charge beyond a small case registration fee.": {
+    "message": "We are a recovery firm that specialises in retrieving funds lost to online fraud. Our records show you may be eligible to recover a previous loss. There is no upfront charge beyond a small case registration fee.",
+    "is_suspicious": true,
+    "summary": "The message uses the promise of recovering lost money to entice you into paying a small initial fee.",
+    "tactics": [
+      {
+        "label": "reward",
+        "evidence": [
+          "you may be eligible to recover a previous loss"
+        ],
+        "explanation": "This targets your emotions by offering a positive outcome (getting money back) to encourage you to engage with the sender.",
+        "confidence": 0.9
+      }
+    ],
+    "spans": [
+      {
+        "label": "reward",
+        "text": "you may be eligible to recover a previous loss",
+        "start": 99,
+        "end": 145
+      }
+    ],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "Hi, this is the delivery driver. I've got a package for you but the address label is smudged. Can you confirm your full address and the card you paid with so I can match it to the order?": {
+    "message": "Hi, this is the delivery driver. I've got a package for you but the address label is smudged. Can you confirm your full address and the card you paid with so I can match it to the order?",
+    "is_suspicious": true,
+    "summary": "The message uses a common delivery persona to request sensitive personal and financial information under the guise of a logistical problem.",
+    "tactics": [
+      {
+        "label": "impersonation",
+        "evidence": [
+          "this is the delivery driver"
+        ],
+        "explanation": "The sender is pretending to be a delivery worker to build trust and make the request for information seem like a routine part of a delivery process.",
+        "confidence": 0.9
+      }
+    ],
+    "spans": [
+      {
+        "label": "impersonation",
+        "text": "this is the delivery driver",
+        "start": 4,
+        "end": 31
+      }
+    ],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "I saw your post about the flat. I'm currently abroad for work so I can't do a viewing, but I'm happy to pay the deposit and first month today to secure it. Could you send your bank details?": {
+    "message": "I saw your post about the flat. I'm currently abroad for work so I can't do a viewing, but I'm happy to pay the deposit and first month today to secure it. Could you send your bank details?",
+    "is_suspicious": true,
+    "summary": "The message uses a common tactic where a person claims to be unable to visit in person but offers to send money immediately to 'secure' a deal.",
+    "tactics": [
+      {
+        "label": "reward",
+        "evidence": [
+          "happy to pay the deposit and first month today to secure it"
+        ],
+        "explanation": "By offering to pay immediately, the sender creates a sense of a 'guaranteed' win for the seller, which can entice the recipient to bypass normal safety checks.",
+        "confidence": 0.8
+      }
+    ],
+    "spans": [
+      {
+        "label": "reward",
+        "text": "happy to pay the deposit and first month today to secure it",
+        "start": 95,
+        "end": 154
+      }
+    ],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
+  },
+  "As a long-standing customer you qualify for our loyalty cashback programme. Nothing is required from you except confirming the card you would like the cashback paid to.": {
+    "message": "As a long-standing customer you qualify for our loyalty cashback programme. Nothing is required from you except confirming the card you would like the cashback paid to.",
+    "is_suspicious": true,
+    "summary": "The message uses a reward to entice you into providing financial information under the guise of a loyalty program.",
+    "tactics": [
+      {
+        "label": "reward",
+        "evidence": [
+          "you qualify for our loyalty cashback programme"
+        ],
+        "explanation": "This offers a financial benefit to make the reader feel they are getting something for free, which can make them more likely to share personal details.",
+        "confidence": 0.9
+      }
+    ],
+    "spans": [
+      {
+        "label": "reward",
+        "text": "you qualify for our loyalty cashback programme",
+        "start": 28,
+        "end": 74
+      }
+    ],
+    "rejected_quotes": [],
+    "attempts": 1,
+    "provider": "ollama",
+    "model": "gemma4:12b",
+    "error": null
   }
 }

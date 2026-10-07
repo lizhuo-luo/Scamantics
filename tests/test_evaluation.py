@@ -12,12 +12,12 @@ from scamantics.schema import AnalysisResult, VerifiedTactic
 
 def test_dataset_integrity():
     ex = load_dataset("data/test_set.jsonl")
-    assert len(ex) >= 60
+    assert len(ex) >= 90
     assert check_dataset(ex) == []
     cats = {e.category for e in ex}
-    assert cats == {"familiar", "paraphrased", "benign"}
-    assert all(e.labels == [] for e in ex if e.category == "benign")
-    assert all(e.labels for e in ex if e.category != "benign")
+    assert cats == {"familiar", "paraphrased", "benign", "hard_benign", "subtle_scam"}
+    assert all(e.labels == [] for e in ex if e.category in ("benign", "hard_benign"))
+    assert all(e.labels for e in ex if e.category in ("familiar", "paraphrased"))
 
 
 def test_classification_metrics_perfect_and_empty():

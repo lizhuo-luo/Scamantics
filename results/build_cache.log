@@ -1,67 +1,92 @@
-INFO:scamantics:retrying: 3 rejected quotes
 Ollama ok, model gemma4:12b
-ok (1x): ['urgency', 'impersonation', 'threat', 'isolation'] URGENT: Your HSBC account has been locked due to s
-ok (1x): ['reward', 'urgency'] Congratulations! You have been selected as our luc
-ok (1x): ['impersonation', 'urgency', 'isolation'] Hi Mum, it's me. I dropped my phone in the sink so
-ok (1x): ['impersonation', 'urgency', 'threat'] This is Officer Daniels from the Australian Taxati
-ok (1x): ['urgency', 'impersonation', 'threat'] Your parcel could not be delivered because of an u
-ok (1x): [] Hi Sam, running about 10 minutes late, can you gra
-ok (1x): [] Reminder: your dentist appointment is on Tuesday 1
-ok (1x): ['urgency', 'impersonation'] Netflix: We were unable to process your payment. U
-ok (1x): ['impersonation', 'urgency', 'threat'] I am a Microsoft certified technician. We have det
-ok (1x): ['impersonation', 'reward', 'isolation'] Dear friend, I am Barrister James Okoro. My late c
-ok (1x): ['urgency', 'threat'] I have recorded you through your webcam visiting a
-ok (1x): ['urgency', 'impersonation'] Your Apple ID has been used to purchase an iPhone 
-ok (1x): ['reward', 'urgency'] Guaranteed 30% monthly returns on our crypto tradi
-ok (1x): ['impersonation', 'urgency', 'threat'] FINAL NOTICE from the Department for Work and Pens
-ok (1x): ['impersonation', 'urgency', 'isolation'] Hi, this is Amazon Customer Service. A suspicious 
-ok (1x): ['impersonation', 'reward', 'urgency'] You have 1 unclaimed tax refund of £386.40 from HM
-ok (1x): ['impersonation', 'urgency'] Hey, it's John from the IT department. We're rolli
-ok (1x): ['impersonation', 'urgency'] Dear valued customer, your Chase debit card has be
-ok (2x): ['reward', 'urgency'] Work from home and earn $5,000 per week with only 
-ok (1x): ['urgency', 'impersonation', 'isolation'] Babe, I know we have only been talking for two wee
-ok (1x): ['impersonation', 'urgency', 'threat'] This is the Social Security Administration. Your s
-ok (1x): ['urgency', 'impersonation'] Your PayPal account will be permanently limited. W
-ok (1x): ['impersonation', 'reward'] Hello, I am a recruiter with Tesla. We would like 
-ok (1x): ['urgency', 'impersonation', 'threat'] Your Google account storage is full and your photo
-ok (1x): ['reward'] You have been chosen to receive a free iPhone 16 a
-ok (1x): ['impersonation', 'urgency', 'isolation'] This is your bank's fraud team. Someone is trying 
-ok (1x): ['urgency', 'threat', 'impersonation'] WARNING: Unpaid toll detected. Your vehicle will b
-ok (1x): ['impersonation', 'urgency'] Quick heads up from the building management: we've
-ok (1x): ['urgency', 'isolation', 'impersonation'] Mate I'm in a bit of a jam, car got towed and they
-ok (1x): ['reward', 'urgency'] We noticed you haven't collected the £120 loyalty 
-ok (1x): ['impersonation', 'threat', 'urgency'] Good afternoon. I'm calling from the court registr
-ok (1x): ['threat', 'urgency'] I've got your browsing history and a few screensho
-ok (1x): ['impersonation', 'isolation'] Your landlord asked me to pass this on: the rent a
-ok (1x): ['urgency', 'reward'] A small group of early supporters is being let int
-ok (1x): ['urgency', 'impersonation'] Dad, my roommate got into an accident and I'm at t
-ok (1x): ['urgency', 'threat'] Our records show your energy supply contract lapse
-ok (1x): ['reward', 'isolation'] I represent the estate of a distant relative who s
-ok (1x): ['impersonation'] The compliance desk at your brokerage flagged a tr
-ok (1x): ['urgency', 'impersonation', 'threat'] You've got a court-ordered debt of 1,240 against y
-ok (1x): ['reward', 'urgency'] We've been watching your trading and you clearly h
-ok (1x): ['impersonation', 'isolation'] Hi it's Grandma's carer. She's fine but the agency
-ok (1x): ['urgency', 'impersonation'] Reminder from the clinic: your prescription renewa
-ok (1x): ['reward', 'isolation'] Because you were one of the first thousand users, 
-ok (1x): ['impersonation', 'urgency'] I'm the new treasurer of the parents' association.
-ok (1x): ['urgency', 'impersonation', 'threat'] Someone used your identity to rent a car that was 
-ok (1x): ['urgency', 'threat'] Your subscription box is stuck at the depot and th
-ok (1x): ['impersonation', 'isolation'] This is Sergeant Lee, Metropolitan Police. We arre
-ok (1x): [] Your Amazon order #112-4455667 has been dispatched
-ok (1x): [] Mum, landed safely in Lisbon. Hotel is lovely, wil
-ok (1x): [] Team, the sprint retro is moved to 3pm Friday in R
-ok (1x): [] Your one-time passcode is 482913. It expires in 10
-ok (1x): [] Thanks for shopping with Tesco. You earned 45 Club
-ok (1x): [] Hey! Are we still on for football Sunday? I can dr
-ok (1x): [] Your electricity bill for September is £86.20 and 
-ok (1x): [] Happy birthday Alex!! Hope you have a brilliant da
-ok (1x): [] School notice: Year 6 swimming lessons start next 
-ok (1x): [] Hi, this is Dr Patel's surgery. Your blood test re
-ok (1x): [] Your table for 4 at Luigi's is confirmed for Satur
-ok (1x): [] Library reminder: 'The Overstory' is due back on 2
-ok (1x): [] Can you send me the recipe for that lentil soup yo
-saved 60 entries to data/demo_cache.json
-
-real	4m4.573s
-user	0m15.928s
-sys	0m0.411s
+cached : URGENT: Your HSBC account has been locked due to suspicious 
+cached : Congratulations! You have been selected as our lucky winner 
+cached : Hi Mum, it's me. I dropped my phone in the sink so this is m
+cached : This is Officer Daniels from the Australian Taxation Office.
+cached : Your parcel could not be delivered because of an unpaid cust
+cached : Hi Sam, running about 10 minutes late, can you grab me a fla
+cached : Reminder: your dentist appointment is on Tuesday 14 Oct at 9
+cached : Netflix: We were unable to process your payment. Update your
+cached : I am a Microsoft certified technician. We have detected a vi
+cached : Dear friend, I am Barrister James Okoro. My late client left
+cached : I have recorded you through your webcam visiting adult websi
+cached : Your Apple ID has been used to purchase an iPhone 15 Pro for
+cached : Guaranteed 30% monthly returns on our crypto trading platfor
+cached : FINAL NOTICE from the Department for Work and Pensions. You 
+cached : Hi, this is Amazon Customer Service. A suspicious order of $
+cached : You have 1 unclaimed tax refund of £386.40 from HMRC. Claim 
+cached : Hey, it's John from the IT department. We're rolling out a s
+cached : Dear valued customer, your Chase debit card has been tempora
+cached : Work from home and earn $5,000 per week with only 2 hours of
+cached : Babe, I know we have only been talking for two weeks but I f
+cached : This is the Social Security Administration. Your social secu
+cached : Your PayPal account will be permanently limited. We noticed 
+cached : Hello, I am a recruiter with Tesla. We would like to offer y
+cached : Your Google account storage is full and your photos will be 
+cached : You have been chosen to receive a free iPhone 16 as part of 
+cached : This is your bank's fraud team. Someone is trying to empty y
+cached : WARNING: Unpaid toll detected. Your vehicle will be reported
+cached : Quick heads up from the building management: we've had a few
+cached : Mate I'm in a bit of a jam, car got towed and they only take
+cached : We noticed you haven't collected the £120 loyalty bonus sitt
+cached : Good afternoon. I'm calling from the court registry regardin
+cached : I've got your browsing history and a few screenshots your wi
+cached : Your landlord asked me to pass this on: the rent account has
+cached : A small group of early supporters is being let into the pre-
+cached : Dad, my roommate got into an accident and I'm at the hospita
+cached : Our records show your energy supply contract lapsed. Without
+cached : I represent the estate of a distant relative who shares your
+cached : The compliance desk at your brokerage flagged a transfer. To
+cached : You've got a court-ordered debt of 1,240 against your name. 
+cached : We've been watching your trading and you clearly have talent
+cached : Hi it's Grandma's carer. She's fine but the agency changed i
+cached : Reminder from the clinic: your prescription renewal was decl
+cached : Because you were one of the first thousand users, the team h
+cached : I'm the new treasurer of the parents' association. The bank 
+cached : Someone used your identity to rent a car that was later invo
+cached : Your subscription box is stuck at the depot and the slot for
+cached : This is Sergeant Lee, Metropolitan Police. We arrested a man
+cached : Your Amazon order #112-4455667 has been dispatched and will 
+cached : Mum, landed safely in Lisbon. Hotel is lovely, will call you
+cached : Team, the sprint retro is moved to 3pm Friday in Room 4B. Pl
+cached : Your one-time passcode is 482913. It expires in 10 minutes. 
+cached : Thanks for shopping with Tesco. You earned 45 Clubcard point
+cached : Hey! Are we still on for football Sunday? I can drive if you
+cached : Your electricity bill for September is £86.20 and will be co
+cached : Happy birthday Alex!! Hope you have a brilliant day, drinks 
+cached : School notice: Year 6 swimming lessons start next Monday. Pl
+cached : Hi, this is Dr Patel's surgery. Your blood test results are 
+cached : Your table for 4 at Luigi's is confirmed for Saturday at 7:3
+cached : Library reminder: 'The Overstory' is due back on 20 October.
+cached : Can you send me the recipe for that lentil soup you made? Da
+ok (1x): [] Barclays: Did you attempt a payment of £249.99 to 
+ok (1x): [] Your one-time passcode is 731 904. Do not share th
+ok (1x): [] DPD: Your parcel from ASOS is arriving today betwe
+ok (1x): [] Hi, this is Maria from the letting agency. Your te
+ok (1x): [] Thames Water: Planned maintenance means your water
+ok (1x): [] Your council tax instalment of £142 was not collec
+ok (1x): [] NHS: Your flu vaccination is now available. Book a
+ok (1x): [] Hey it's Tom, lost my phone on the train yesterday
+ok (1x): [] Cancer Research UK: Thank you for your monthly gif
+ok (1x): [] Monzo: We've blocked a card payment of £89 at a me
+ok (1x): [] Reminder from the HR team: open enrolment for heal
+ok (1x): [] This is a message from the Metropolitan Police. Yo
+ok (1x): [] Your Netflix payment didn't go through. Update you
+ok (1x): [] Hi Dad, can you lend me £40 until payday on Friday
+ok (1x): [] HMRC: You have a new message in your Personal Tax 
+ok (1x): ['impersonation'] Hi, is this Rachel? Sorry, I think I have the wron
+ok (1x): ['reward'] Thanks for applying. The role is fully remote and 
+ok (1x): ['reward'] I have been investing with a small fund for the pa
+ok (1x): ['impersonation'] Good morning. We are completing a routine review o
+ok (1x): ['impersonation', 'reward'] Hi love, I know we have not met in person yet, but
+ok (1x): ['reward'] You have been pre-approved for a personal loan of 
+ok (1x): ['impersonation', 'reward'] Hello, I am reaching out on behalf of a well-known
+ok (1x): ['reward', 'impersonation'] I noticed we both follow the same crypto community
+ok (1x): ['impersonation', 'isolation'] Hi Grandad, it's Ollie. I'm okay but I've had a bi
+ok (1x): ['impersonation', 'urgency', 'reward'] Dear homeowner, our records indicate you may be el
+ok (1x): ['reward'] Your recent review of the Harbour Hotel was apprec
+ok (1x): ['reward'] We are a recovery firm that specialises in retriev
+ok (1x): ['impersonation'] Hi, this is the delivery driver. I've got a packag
+ok (1x): ['reward'] I saw your post about the flat. I'm currently abro
+ok (1x): ['reward'] As a long-standing customer you qualify for our lo
+saved 90 entries to data/demo_cache.json
