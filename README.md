@@ -116,6 +116,14 @@ SCAMANTICS_PROVIDER=sglang python app.py
 SCAMANTICS_PROVIDER=sglang python evaluate.py --no-cache --out results/eval_sglang_qwen2.5-7b.json
 ```
 
+SGLang compiles some kernels at start-up and needs a CUDA toolkit of 12.9 or newer on `PATH`. If the system `nvcc` is older (symptoms: `NVCC version must be at least 12.9` or `Value 'c++20' is not defined for option 'std'`), install one into the SGLang environment and disable the FP8 DeepGEMM path, which bf16 models do not use anyway:
+
+```bash
+conda install -c nvidia "cuda-nvcc=13.0" "cuda-cudart-dev=13.0" "cuda-crt-dev_linux-64=13.0"
+export CUDA_HOME=$CONDA_PREFIX PATH=$CONDA_PREFIX/bin:$PATH
+SGLANG_ENABLE_JIT_DEEPGEMM=false python -m sglang.launch_server --model-path Qwen/Qwen2.5-7B-Instruct --port 30000
+```
+
 vLLM is the same with `python -m vllm.entrypoints.openai.api_server --model <model> --port 8000` and `SCAMANTICS_PROVIDER=vllm`.
 
 **Offline cache.** `data/demo_cache.json` holds precomputed results for every message in the examples and the test set. It is served when the backend is down, and used by the `mock` provider. Rebuild it after changing the prompt or the model:
@@ -168,6 +176,17 @@ python evaluate.py --category hard_benign                 # one subset only
 | hard_benign | 15 | 1.000 | – | – | 1.000 | – |
 
 Per-label F1: urgency 0.958 · impersonation 0.904 · isolation 0.963 · reward 0.955 · threat 0.938. Mean attempts 1.01; about 4 s per message on one GPU.
+
+### Second model: `Qwen/Qwen2.5-7B-Instruct` via SGLang
+
+Same pipeline, same prompt, different model and server. Full report in `results/eval_sglang_qwen2.5-7b.txt`.
+
+| Model / server | Detection acc. | Macro F1 | Micro F1 | Grounding | Span F1 | Time per message |
+|---|---|---|---|---|---|---|
+| gemma4:12b, Ollama | 0.978 | 0.943 | 0.939 | 1.000 | 0.786 | ~4 s |
+| Qwen2.5-7B-Instruct, SGLang | 0.800 | 0.528 | 0.540 | 1.000 | 0.212 | ~0.5 s |
+
+The 7B model is eight times faster but misses many tactics (per-label F1 for impersonation is 0.11) and quotes long sentences rather than the key phrase, which drags span F1 down. Grounding stays at 1.0 on both because the schema-constrained decoding and the validator are model-independent. The take-away for the project is that the pipeline is portable across servers and the model choice, not the infrastructure, drives quality.
 
 **Reading the numbers.** All 30 legitimate messages, including the scam-lookalikes in `hard_benign`, were left unflagged, and every quote the model produced was verbatim. The weak spot is `subtle_scam`: the model flags the two deliberately empty-labelled messages (wrong-number opener as impersonation, overpaying tenant as reward) and reads the romance groomer as impersonation + reward rather than isolation. Those readings are defensible, which is the kind of annotation disagreement a small benchmark cannot settle. Per-message predictions are in `results/eval_ollama_gemma4-12b.json`.
 

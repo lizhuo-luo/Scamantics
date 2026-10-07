@@ -1,0 +1,3307 @@
+{
+  "model": "sglang:Qwen/Qwen2.5-7B-Instruct",
+  "metrics": {
+    "all": {
+      "n": 90.0,
+      "detection_accuracy": 0.8,
+      "detection_f1": 0.8269230769230769,
+      "false_positive_rate": 0.09375,
+      "false_negative_rate": 0.25862068965517243,
+      "macro_f1": 0.5284126984126984,
+      "micro_f1": 0.5402298850574713,
+      "macro_precision": 0.8034848484848485,
+      "macro_recall": 0.4219251336898395,
+      "f1_urgency": 0.7142857142857143,
+      "f1_impersonation": 0.1111111111111111,
+      "f1_isolation": 0.75,
+      "f1_reward": 0.6666666666666666,
+      "f1_threat": 0.4,
+      "grounding_rate": 1.0,
+      "verified_evidence_rate": 1.0,
+      "span_f1": 0.21164562269596573,
+      "n_quotes": 57.0,
+      "errors": 0.0,
+      "mean_attempts": 1.011111111111111
+    },
+    "benign": {
+      "n": 15.0,
+      "detection_accuracy": 0.9333333333333333,
+      "detection_f1": 0.0,
+      "false_positive_rate": 0.06666666666666667,
+      "false_negative_rate": 0.0,
+      "grounding_rate": 1.0,
+      "verified_evidence_rate": 1.0,
+      "span_f1": 0.0,
+      "n_quotes": 1.0,
+      "errors": 0.0,
+      "mean_attempts": 1.0
+    },
+    "familiar": {
+      "n": 25.0,
+      "detection_accuracy": 1.0,
+      "detection_f1": 1.0,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.0,
+      "macro_f1": 0.6199134199134199,
+      "micro_f1": 0.6041666666666666,
+      "macro_precision": 0.9071428571428573,
+      "macro_recall": 0.5375028480291638,
+      "f1_urgency": 0.7428571428571429,
+      "f1_impersonation": 0.19047619047619047,
+      "f1_isolation": 0.9090909090909091,
+      "f1_reward": 0.8571428571428571,
+      "f1_threat": 0.4,
+      "grounding_rate": 1.0,
+      "verified_evidence_rate": 1.0,
+      "span_f1": 0.23392082187715968,
+      "n_quotes": 33.0,
+      "errors": 0.0,
+      "mean_attempts": 1.04
+    },
+    "hard_benign": {
+      "n": 15.0,
+      "detection_accuracy": 0.8666666666666667,
+      "detection_f1": 0.0,
+      "false_positive_rate": 0.13333333333333333,
+      "false_negative_rate": 0.0,
+      "grounding_rate": 1.0,
+      "verified_evidence_rate": 1.0,
+      "span_f1": 0.0,
+      "n_quotes": 2.0,
+      "errors": 0.0,
+      "mean_attempts": 1.0
+    },
+    "paraphrased": {
+      "n": 20.0,
+      "detection_accuracy": 0.65,
+      "detection_f1": 0.7878787878787878,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.35,
+      "macro_f1": 0.44000000000000006,
+      "micro_f1": 0.5,
+      "macro_precision": 0.8,
+      "macro_recall": 0.3143589743589743,
+      "f1_urgency": 0.7,
+      "f1_impersonation": 0.0,
+      "f1_isolation": 0.6666666666666666,
+      "f1_reward": 0.3333333333333333,
+      "f1_threat": 0.5,
+      "grounding_rate": 1.0,
+      "verified_evidence_rate": 1.0,
+      "span_f1": 0.1857743469483265,
+      "n_quotes": 14.0,
+      "errors": 0.0,
+      "mean_attempts": 1.0
+    },
+    "subtle_scam": {
+      "n": 15.0,
+      "detection_accuracy": 0.4666666666666667,
+      "detection_f1": 0.5555555555555556,
+      "false_positive_rate": 0.0,
+      "false_negative_rate": 0.6153846153846154,
+      "macro_f1": 0.2564102564102564,
+      "micro_f1": 0.43478260869565216,
+      "macro_precision": 0.4,
+      "macro_recall": 0.18888888888888888,
+      "f1_urgency": 0.0,
+      "f1_impersonation": 0.0,
+      "f1_isolation": 0.6666666666666666,
+      "f1_reward": 0.6153846153846154,
+      "f1_threat": 0.0,
+      "grounding_rate": 1.0,
+      "verified_evidence_rate": 1.0,
+      "span_f1": 0.1856060606060606,
+      "n_quotes": 7.0,
+      "errors": 0.0,
+      "mean_attempts": 1.0
+    }
+  },
+  "predictions": [
+    {
+      "id": "f01",
+      "category": "familiar",
+      "gold": [
+        "urgency",
+        "impersonation",
+        "isolation",
+        "threat"
+      ],
+      "gold_evidence": {
+        "urgency": [
+          "URGENT",
+          "within 2 hours"
+        ],
+        "impersonation": [
+          "Your HSBC account"
+        ],
+        "isolation": [
+          "Do not share this message with anyone"
+        ],
+        "threat": [
+          "your funds will be frozen permanently"
+        ]
+      },
+      "result": {
+        "message": "URGENT: Your HSBC account has been locked due to suspicious activity. Verify your identity within 2 hours at hsbc-secure-verify.com or your funds will be frozen permanently. Do not share this message with anyone.",
+        "is_suspicious": true,
+        "summary": "The message is trying to create a sense of urgency and isolation.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "Verify your identity within 2 hours at hsbc-secure-verify.com or your funds will be frozen permanently."
+            ],
+            "explanation": "This phrase creates a deadline, suggesting that immediate action is required to avoid losing money.",
+            "confidence": 0.9
+          },
+          {
+            "label": "isolation",
+            "evidence": [
+              "Do not share this message with anyone."
+            ],
+            "explanation": "This phrase asks you to keep the matter private, cutting off outside advice and support.",
+            "confidence": 0.8
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "Verify your identity within 2 hours at hsbc-secure-verify.com or your funds will be frozen permanently.",
+            "start": 70,
+            "end": 173
+          },
+          {
+            "label": "isolation",
+            "text": "Do not share this message with anyone.",
+            "start": 174,
+            "end": 212
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f02",
+      "category": "familiar",
+      "gold": [
+        "reward",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "lucky winner of a $1,000 Walmart gift card"
+        ],
+        "urgency": [
+          "before midnight tonight"
+        ]
+      },
+      "result": {
+        "message": "Congratulations! You have been selected as our lucky winner of a $1,000 Walmart gift card. Reply YES to claim your prize before midnight tonight.",
+        "is_suspicious": true,
+        "summary": "The message offers a large reward and demands immediate action.",
+        "tactics": [
+          {
+            "label": "reward",
+            "evidence": [
+              "Congratulations! You have been selected as our lucky winner of a $1,000 Walmart gift card."
+            ],
+            "explanation": "The message suggests you've won a significant prize, which might seem too good to be true and could motivate you to act quickly.",
+            "confidence": 0.9
+          },
+          {
+            "label": "urgency",
+            "evidence": [
+              "Reply YES to claim your prize before midnight tonight."
+            ],
+            "explanation": "The message creates urgency by setting a deadline for claiming the prize, pressuring you to respond without delay.",
+            "confidence": 0.8
+          }
+        ],
+        "spans": [
+          {
+            "label": "reward",
+            "text": "Congratulations! You have been selected as our lucky winner of a $1,000 Walmart gift card.",
+            "start": 0,
+            "end": 90
+          },
+          {
+            "label": "urgency",
+            "text": "Reply YES to claim your prize before midnight tonight.",
+            "start": 91,
+            "end": 145
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f03",
+      "category": "familiar",
+      "gold": [
+        "impersonation",
+        "urgency",
+        "isolation"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "Hi Mum, it's me"
+        ],
+        "urgency": [
+          "I need to pay a bill today"
+        ],
+        "isolation": [
+          "Please don't tell Dad"
+        ]
+      },
+      "result": {
+        "message": "Hi Mum, it's me. I dropped my phone in the sink so this is my new number. I need to pay a bill today but my banking app is locked on the old phone, could you transfer £850 to this account? Please don't tell Dad, he'll be angry about the phone.",
+        "is_suspicious": true,
+        "summary": "The message asks you to keep the matter private and not tell your spouse, which could be a tactic to isolate you.",
+        "tactics": [
+          {
+            "label": "isolation",
+            "evidence": [
+              "Please don't tell Dad, he'll be angry about the phone."
+            ],
+            "explanation": "Asking not to inform your spouse may make you less likely to question the request or seek advice from them.",
+            "confidence": 0.8
+          }
+        ],
+        "spans": [
+          {
+            "label": "isolation",
+            "text": "Please don't tell Dad, he'll be angry about the phone.",
+            "start": 189,
+            "end": 243
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f04",
+      "category": "familiar",
+      "gold": [
+        "impersonation",
+        "threat",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "Officer Daniels from the Australian Taxation Office"
+        ],
+        "threat": [
+          "A warrant has been issued for your arrest",
+          "avoid prosecution"
+        ],
+        "urgency": [
+          "immediately"
+        ]
+      },
+      "result": {
+        "message": "This is Officer Daniels from the Australian Taxation Office. A warrant has been issued for your arrest due to unpaid tax. Call 02 8000 1234 immediately to settle the amount and avoid prosecution.",
+        "is_suspicious": true,
+        "summary": "The message claims to be from the Australian Taxation Office and warns of immediate arrest, which is a strong pressure to act quickly.",
+        "tactics": [
+          {
+            "label": "impersonation",
+            "evidence": [
+              "This is Officer Daniels from the Australian Taxation Office."
+            ],
+            "explanation": "By claiming to be from the Australian Taxation Office, the message tries to make the reader believe it is legitimate and trustworthy.",
+            "confidence": 0.9
+          },
+          {
+            "label": "threat",
+            "evidence": [
+              "A warrant has been issued for your arrest due to unpaid tax.",
+              "Call 02 8000 1234 immediately to settle the amount and avoid prosecution."
+            ],
+            "explanation": "The message threatens immediate arrest if the reader does not comply, creating a sense of urgency and fear to act quickly.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "impersonation",
+            "text": "This is Officer Daniels from the Australian Taxation Office.",
+            "start": 0,
+            "end": 60
+          },
+          {
+            "label": "threat",
+            "text": "A warrant has been issued for your arrest due to unpaid tax.",
+            "start": 61,
+            "end": 121
+          },
+          {
+            "label": "threat",
+            "text": "Call 02 8000 1234 immediately to settle the amount and avoid prosecution.",
+            "start": 122,
+            "end": 195
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 2,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f05",
+      "category": "familiar",
+      "gold": [
+        "urgency",
+        "threat",
+        "impersonation"
+      ],
+      "gold_evidence": {
+        "urgency": [
+          "within 12 hours"
+        ],
+        "threat": [
+          "the item will be returned to sender"
+        ],
+        "impersonation": [
+          "royalmail-redelivery.net"
+        ]
+      },
+      "result": {
+        "message": "Your parcel could not be delivered because of an unpaid customs fee of $2.99. Pay within 12 hours at royalmail-redelivery.net or the item will be returned to sender.",
+        "is_suspicious": true,
+        "summary": "The message is pressuring you to act quickly to avoid losing your parcel.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "Pay within 12 hours at royalmail-redelivery.net or the item will be returned to sender."
+            ],
+            "explanation": "This phrase creates a sense of urgency by setting a short deadline, suggesting that not paying within 12 hours will result in losing the parcel.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "Pay within 12 hours at royalmail-redelivery.net or the item will be returned to sender.",
+            "start": 78,
+            "end": 165
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f06",
+      "category": "familiar",
+      "gold": [
+        "impersonation",
+        "urgency",
+        "threat"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "Netflix:"
+        ],
+        "urgency": [
+          "within 24 hours"
+        ],
+        "threat": [
+          "avoid suspension of your account"
+        ]
+      },
+      "result": {
+        "message": "Netflix: We were unable to process your payment. Update your billing details within 24 hours to avoid suspension of your account: netflix-billing-update.com",
+        "is_suspicious": true,
+        "summary": "The message is pressuring you to act quickly to avoid account suspension.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "Update your billing details within 24 hours to avoid suspension of your account"
+            ],
+            "explanation": "This phrase creates a sense of urgency by stating that action must be taken within 24 hours or the account will be suspended.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "Update your billing details within 24 hours to avoid suspension of your account",
+            "start": 49,
+            "end": 128
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f07",
+      "category": "familiar",
+      "gold": [
+        "impersonation",
+        "threat",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "I am a Microsoft certified technician"
+        ],
+        "threat": [
+          "before your data is lost forever"
+        ],
+        "urgency": [
+          "Call us now"
+        ]
+      },
+      "result": {
+        "message": "I am a Microsoft certified technician. We have detected a virus on your computer that is stealing your bank details. Call us now on 1-800-555-0199 before your data is lost forever.",
+        "is_suspicious": true,
+        "summary": "The message claims to be from a Microsoft technician and warns of immediate loss of data, pressuring you to act quickly.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "Call us now on 1-800-555-0199 before your data is lost forever."
+            ],
+            "explanation": "This phrase tells you to call immediately to avoid losing your data, creating a sense of urgency.",
+            "confidence": 1.0
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "Call us now on 1-800-555-0199 before your data is lost forever.",
+            "start": 117,
+            "end": 180
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f08",
+      "category": "familiar",
+      "gold": [
+        "reward",
+        "isolation",
+        "impersonation"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "you will receive 40% of the funds"
+        ],
+        "isolation": [
+          "This matter is strictly confidential"
+        ],
+        "impersonation": [
+          "I am Barrister James Okoro"
+        ]
+      },
+      "result": {
+        "message": "Dear friend, I am Barrister James Okoro. My late client left $8.5 million with no next of kin. If you agree to act as beneficiary you will receive 40% of the funds. This matter is strictly confidential.",
+        "is_suspicious": true,
+        "summary": "The message claims to be from a barrister about a large inheritance, which sounds too good to be true.",
+        "tactics": [
+          {
+            "label": "reward",
+            "evidence": [
+              "If you agree to act as beneficiary you will receive 40% of the funds."
+            ],
+            "explanation": "This phrase suggests a large reward that seems too good to be true, which can pressure the reader to act without verifying the claim.",
+            "confidence": 0.9
+          },
+          {
+            "label": "isolation",
+            "evidence": [
+              "This matter is strictly confidential."
+            ],
+            "explanation": "This phrase asks the reader to keep the matter private and not discuss it with others, cutting off potential advice or verification.",
+            "confidence": 0.8
+          }
+        ],
+        "spans": [
+          {
+            "label": "reward",
+            "text": "If you agree to act as beneficiary you will receive 40% of the funds.",
+            "start": 95,
+            "end": 164
+          },
+          {
+            "label": "isolation",
+            "text": "This matter is strictly confidential.",
+            "start": 165,
+            "end": 202
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f09",
+      "category": "familiar",
+      "gold": [
+        "threat",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "threat": [
+          "I will send the video to all your contacts"
+        ],
+        "urgency": [
+          "within 48 hours"
+        ]
+      },
+      "result": {
+        "message": "I have recorded you through your webcam visiting adult websites. Pay $900 in Bitcoin to the address below within 48 hours or I will send the video to all your contacts.",
+        "is_suspicious": true,
+        "summary": "The message threatens to release private material if not paid, which is a common scam tactic.",
+        "tactics": [
+          {
+            "label": "threat",
+            "evidence": [
+              "I will send the video to all your contacts."
+            ],
+            "explanation": "This phrase warns that your private videos will be shared, which can pressure you into paying quickly.",
+            "confidence": 1.0
+          }
+        ],
+        "spans": [
+          {
+            "label": "threat",
+            "text": "I will send the video to all your contacts.",
+            "start": 125,
+            "end": 168
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f10",
+      "category": "familiar",
+      "gold": [
+        "impersonation",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "Your Apple ID"
+        ],
+        "urgency": [
+          "cancel the order immediately"
+        ]
+      },
+      "result": {
+        "message": "Your Apple ID has been used to purchase an iPhone 15 Pro for $1,299. If this was not you, cancel the order immediately at apple-id-support.net.",
+        "is_suspicious": true,
+        "summary": "The message suggests immediate action to avoid a purchase, which could be a scam.",
+        "tactics": [
+          {
+            "label": "reward",
+            "evidence": [
+              "Your Apple ID has been used to purchase an iPhone 15 Pro for $1,299."
+            ],
+            "explanation": "The message implies that you have made an unauthorized purchase and must act quickly to cancel it, suggesting a reward or benefit (presumably avoiding financial loss) if you comply.",
+            "confidence": 0.8
+          }
+        ],
+        "spans": [
+          {
+            "label": "reward",
+            "text": "Your Apple ID has been used to purchase an iPhone 15 Pro for $1,299.",
+            "start": 0,
+            "end": 68
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f11",
+      "category": "familiar",
+      "gold": [
+        "reward",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "Guaranteed 30% monthly returns",
+          "Zero risk"
+        ],
+        "urgency": [
+          "Our VIP slots close tonight"
+        ]
+      },
+      "result": {
+        "message": "Guaranteed 30% monthly returns on our crypto trading platform. Zero risk. Our VIP slots close tonight, deposit a minimum of $250 to lock in your spot.",
+        "is_suspicious": true,
+        "summary": "The message promises high returns with no risk, which sounds too good to be true.",
+        "tactics": [
+          {
+            "label": "reward",
+            "evidence": [
+              "Guaranteed 30% monthly returns on our crypto trading platform. Zero risk."
+            ],
+            "explanation": "The message offers a very high return with no risk, which is often used to entice people to invest without considering the risks.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "reward",
+            "text": "Guaranteed 30% monthly returns on our crypto trading platform. Zero risk.",
+            "start": 0,
+            "end": 73
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f12",
+      "category": "familiar",
+      "gold": [
+        "impersonation",
+        "threat",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "Department for Work and Pensions"
+        ],
+        "threat": [
+          "bailiffs attending your property"
+        ],
+        "urgency": [
+          "FINAL NOTICE",
+          "Failure to pay today"
+        ]
+      },
+      "result": {
+        "message": "FINAL NOTICE from the Department for Work and Pensions. You owe an outstanding penalty of £450. Failure to pay today will result in bailiffs attending your property.",
+        "is_suspicious": true,
+        "summary": "The message uses a threat to pressure immediate action.",
+        "tactics": [
+          {
+            "label": "threat",
+            "evidence": [
+              "Failure to pay today will result in bailiffs attending your property."
+            ],
+            "explanation": "This phrase warns that bailiffs will come if you do not pay immediately, creating urgency and pressure to act without delay.",
+            "confidence": 1.0
+          }
+        ],
+        "spans": [
+          {
+            "label": "threat",
+            "text": "Failure to pay today will result in bailiffs attending your property.",
+            "start": 96,
+            "end": 165
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f13",
+      "category": "familiar",
+      "gold": [
+        "impersonation",
+        "isolation"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "this is Amazon Customer Service"
+        ],
+        "isolation": [
+          "Do not contact your bank"
+        ]
+      },
+      "result": {
+        "message": "Hi, this is Amazon Customer Service. A suspicious order of $1,850 was placed on your account. To cancel, press 1 or call back on this number. Do not contact your bank as the fraud department is handling it.",
+        "is_suspicious": true,
+        "summary": "The message claims to be from Amazon and suggests immediate action to avoid fraud, which could be a scam.",
+        "tactics": [
+          {
+            "label": "impersonation",
+            "evidence": [
+              "Hi, this is Amazon Customer Service."
+            ],
+            "explanation": "The message pretends to be from Amazon to make the request seem legitimate.",
+            "confidence": 0.9
+          },
+          {
+            "label": "urgency",
+            "evidence": [
+              "A suspicious order of $1,850 was placed on your account. To cancel, press 1 or call back on this number. Do not contact your bank as the fraud department is handling it."
+            ],
+            "explanation": "It pressures you to act immediately by mentioning a suspicious order and suggesting pressing 1 or calling back right away.",
+            "confidence": 0.8
+          }
+        ],
+        "spans": [
+          {
+            "label": "impersonation",
+            "text": "Hi, this is Amazon Customer Service.",
+            "start": 0,
+            "end": 36
+          },
+          {
+            "label": "urgency",
+            "text": "A suspicious order of $1,850 was placed on your account. To cancel, press 1 or call back on this number. Do not contact your bank as the fraud department is handling it.",
+            "start": 37,
+            "end": 206
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f14",
+      "category": "familiar",
+      "gold": [
+        "reward",
+        "impersonation",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "unclaimed tax refund of £386.40"
+        ],
+        "impersonation": [
+          "from HMRC"
+        ],
+        "urgency": [
+          "before the claim window closes on Friday"
+        ]
+      },
+      "result": {
+        "message": "You have 1 unclaimed tax refund of £386.40 from HMRC. Claim it now via the secure link before the claim window closes on Friday: hmrc-refund-claim.co",
+        "is_suspicious": true,
+        "summary": "The message urges immediate action to claim a tax refund, which could be a scam.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "Claim it now via the secure link before the claim window closes on Friday"
+            ],
+            "explanation": "This phrase pressures you to act quickly to avoid missing out on the refund.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "Claim it now via the secure link before the claim window closes on Friday",
+            "start": 54,
+            "end": 127
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f15",
+      "category": "familiar",
+      "gold": [
+        "impersonation",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "it's John from the IT department"
+        ],
+        "urgency": [
+          "send it over ASAP",
+          "before the deadline"
+        ]
+      },
+      "result": {
+        "message": "Hey, it's John from the IT department. We're rolling out a security update and I need your login password to complete it on your machine. Please send it over ASAP so I can finish before the deadline.",
+        "is_suspicious": true,
+        "summary": "The message asks for a sensitive piece of information and creates urgency by mentioning a deadline.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "Please send it over ASAP so I can finish before the deadline."
+            ],
+            "explanation": "This phrase creates pressure to act quickly, which may prevent you from double-checking the request's legitimacy.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "Please send it over ASAP so I can finish before the deadline.",
+            "start": 138,
+            "end": 199
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f16",
+      "category": "familiar",
+      "gold": [
+        "impersonation",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "your Chase debit card"
+        ],
+        "urgency": [
+          "within the next 6 hours"
+        ]
+      },
+      "result": {
+        "message": "Dear valued customer, your Chase debit card has been temporarily disabled. Confirm your card number and PIN at chase-verify-card.com to restore access within the next 6 hours.",
+        "is_suspicious": true,
+        "summary": "The message is pressuring you to act quickly to avoid your card being permanently disabled.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "Confirm your card number and PIN at chase-verify-card.com to restore access within the next 6 hours."
+            ],
+            "explanation": "The message uses a deadline to create urgency, suggesting that inaction will result in permanent card disablement.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "Confirm your card number and PIN at chase-verify-card.com to restore access within the next 6 hours.",
+            "start": 75,
+            "end": 175
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f17",
+      "category": "familiar",
+      "gold": [
+        "reward",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "earn $5,000 per week",
+          "receive a $200 signing bonus"
+        ],
+        "urgency": [
+          "Limited positions, apply today"
+        ]
+      },
+      "result": {
+        "message": "Work from home and earn $5,000 per week with only 2 hours of work a day! No experience required. Limited positions, apply today and receive a $200 signing bonus.",
+        "is_suspicious": true,
+        "summary": "The message promises a high income with little effort, which sounds too good to be true.",
+        "tactics": [
+          {
+            "label": "reward",
+            "evidence": [
+              "Limited positions, apply today and receive a $200 signing bonus."
+            ],
+            "explanation": "The message offers a signing bonus to encourage you to apply quickly, suggesting it's a limited opportunity.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "reward",
+            "text": "Limited positions, apply today and receive a $200 signing bonus.",
+            "start": 97,
+            "end": 161
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f18",
+      "category": "familiar",
+      "gold": [
+        "isolation",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "isolation": [
+          "Please keep this between us"
+        ],
+        "urgency": [
+          "My daughter is in hospital"
+        ]
+      },
+      "result": {
+        "message": "Babe, I know we have only been talking for two weeks but I feel we have a real connection. My daughter is in hospital and I cannot access my account from the oil rig. Could you send $600 for her treatment? Please keep this between us, I am embarrassed.",
+        "is_suspicious": true,
+        "summary": "The message asks for money and suggests keeping it secret, which could be a scam.",
+        "tactics": [
+          {
+            "label": "isolation",
+            "evidence": [
+              "Please keep this between us, I am embarrassed."
+            ],
+            "explanation": "Asking to keep the matter secret can make you less likely to seek advice or report suspicious activity.",
+            "confidence": 0.8
+          }
+        ],
+        "spans": [
+          {
+            "label": "isolation",
+            "text": "Please keep this between us, I am embarrassed.",
+            "start": 206,
+            "end": 252
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f19",
+      "category": "familiar",
+      "gold": [
+        "impersonation",
+        "threat",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "This is the Social Security Administration"
+        ],
+        "threat": [
+          "legal action will be taken against you"
+        ],
+        "urgency": [
+          "Call 1-888-555-0142 now"
+        ]
+      },
+      "result": {
+        "message": "This is the Social Security Administration. Your social security number has been suspended because of suspicious activity. Call 1-888-555-0142 now or legal action will be taken against you.",
+        "is_suspicious": true,
+        "summary": "The message claims to be from the Social Security Administration and warns of legal action if you do not call immediately.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "Call 1-888-555-0142 now or legal action will be taken against you."
+            ],
+            "explanation": "This phrase pressures you to act immediately to avoid legal consequences, without giving time to verify the claim.",
+            "confidence": 1.0
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "Call 1-888-555-0142 now or legal action will be taken against you.",
+            "start": 123,
+            "end": 189
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f20",
+      "category": "familiar",
+      "gold": [
+        "impersonation",
+        "threat",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "Your PayPal account"
+        ],
+        "threat": [
+          "will be permanently limited"
+        ],
+        "urgency": [
+          "Confirm your identity now"
+        ]
+      },
+      "result": {
+        "message": "Your PayPal account will be permanently limited. We noticed unusual login attempts. Confirm your identity now: paypa1-resolution-center.com",
+        "is_suspicious": true,
+        "summary": "The message is trying to create urgency by suggesting the account will be permanently limited if action is not taken immediately.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "Your PayPal account will be permanently limited."
+            ],
+            "explanation": "This phrase creates a sense of urgency, making you feel that immediate action is necessary to avoid permanent limitations on your account.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "Your PayPal account will be permanently limited.",
+            "start": 0,
+            "end": 48
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f21",
+      "category": "familiar",
+      "gold": [
+        "impersonation",
+        "reward"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "I am a recruiter with Tesla"
+        ],
+        "reward": [
+          "paying $45 per hour"
+        ]
+      },
+      "result": {
+        "message": "Hello, I am a recruiter with Tesla. We would like to offer you a remote data entry role paying $45 per hour. To process your onboarding, please purchase equipment through our approved vendor and we will reimburse you with your first paycheck.",
+        "is_suspicious": true,
+        "summary": "The message seems suspicious because it asks you to purchase equipment before confirming the job offer.",
+        "tactics": [
+          {
+            "label": "reward",
+            "evidence": [
+              "we will reimburse you with your first paycheck"
+            ],
+            "explanation": "This phrase suggests a reward (reimbursement) for purchasing equipment, which might seem too good to be true and could pressure you to act quickly without verifying the offer.",
+            "confidence": 0.8
+          }
+        ],
+        "spans": [
+          {
+            "label": "reward",
+            "text": "we will reimburse you with your first paycheck",
+            "start": 195,
+            "end": 241
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f22",
+      "category": "familiar",
+      "gold": [
+        "impersonation",
+        "urgency",
+        "threat"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "Your Google account"
+        ],
+        "urgency": [
+          "in 24 hours",
+          "Upgrade now"
+        ],
+        "threat": [
+          "your photos will be deleted"
+        ]
+      },
+      "result": {
+        "message": "Your Google account storage is full and your photos will be deleted in 24 hours. Upgrade now for only $0.99 at google-storage-renew.com.",
+        "is_suspicious": true,
+        "summary": "The message is trying to make you act quickly by warning that your photos will be deleted soon.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "Your Google account storage is full and your photos will be deleted in 24 hours."
+            ],
+            "explanation": "This phrase creates a sense of urgency by stating that your photos will be deleted if you do not act within 24 hours.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "Your Google account storage is full and your photos will be deleted in 24 hours.",
+            "start": 0,
+            "end": 80
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f23",
+      "category": "familiar",
+      "gold": [
+        "reward"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "receive a free iPhone 16"
+        ]
+      },
+      "result": {
+        "message": "You have been chosen to receive a free iPhone 16 as part of our customer appreciation giveaway. Simply pay the $4.95 shipping fee to receive your device.",
+        "is_suspicious": true,
+        "summary": "The message offers a free iPhone but asks for a shipping fee, which is suspicious.",
+        "tactics": [
+          {
+            "label": "reward",
+            "evidence": [
+              "You have been chosen to receive a free iPhone 16 as part of our customer appreciation giveaway."
+            ],
+            "explanation": "The message suggests you will get a free iPhone, which might seem attractive and motivate you to act quickly.",
+            "confidence": 0.9
+          },
+          {
+            "label": "threat",
+            "evidence": [
+              "Simply pay the $4.95 shipping fee to receive your device."
+            ],
+            "explanation": "The message implies that if you do not pay the fee, you will not receive the iPhone, creating pressure to comply immediately.",
+            "confidence": 0.8
+          }
+        ],
+        "spans": [
+          {
+            "label": "reward",
+            "text": "You have been chosen to receive a free iPhone 16 as part of our customer appreciation giveaway.",
+            "start": 0,
+            "end": 95
+          },
+          {
+            "label": "threat",
+            "text": "Simply pay the $4.95 shipping fee to receive your device.",
+            "start": 96,
+            "end": 153
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f24",
+      "category": "familiar",
+      "gold": [
+        "impersonation",
+        "urgency",
+        "isolation"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "This is your bank's fraud team"
+        ],
+        "urgency": [
+          "right now",
+          "immediately"
+        ],
+        "isolation": [
+          "do not speak to branch staff"
+        ]
+      },
+      "result": {
+        "message": "This is your bank's fraud team. Someone is trying to empty your account right now. We need to move your money to a safe account immediately. Do not hang up and do not speak to branch staff, they may be involved.",
+        "is_suspicious": true,
+        "summary": "The message is urgent and isolates you from seeking help, which could be a scam.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "Someone is trying to empty your account right now."
+            ],
+            "explanation": "This phrase creates a sense of urgency by suggesting immediate action is needed to prevent loss.",
+            "confidence": 0.9
+          },
+          {
+            "label": "isolation",
+            "evidence": [
+              "Do not hang up and do not speak to branch staff, they may be involved."
+            ],
+            "explanation": "This phrase isolates you by preventing you from seeking help or verifying the situation with your bank.",
+            "confidence": 0.85
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "Someone is trying to empty your account right now.",
+            "start": 32,
+            "end": 82
+          },
+          {
+            "label": "isolation",
+            "text": "Do not hang up and do not speak to branch staff, they may be involved.",
+            "start": 141,
+            "end": 211
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "f25",
+      "category": "familiar",
+      "gold": [
+        "threat",
+        "urgency",
+        "impersonation"
+      ],
+      "gold_evidence": {
+        "threat": [
+          "a fine of $250 applied"
+        ],
+        "urgency": [
+          "by end of day"
+        ],
+        "impersonation": [
+          "tollpay-ezpass.info"
+        ]
+      },
+      "result": {
+        "message": "WARNING: Unpaid toll detected. Your vehicle will be reported to the DMV and a fine of $250 applied unless the $6.99 balance is cleared by end of day: tollpay-ezpass.info",
+        "is_suspicious": true,
+        "summary": "The message is urgent and threatens a fine if the balance is not cleared by the end of the day.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "Your vehicle will be reported to the DMV and a fine of $250 applied unless the $6.99 balance is cleared by end of day"
+            ],
+            "explanation": "This phrase creates a sense of urgency by setting a deadline and warning that inaction will result in a fine.",
+            "confidence": 1.0
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "Your vehicle will be reported to the DMV and a fine of $250 applied unless the $6.99 balance is cleared by end of day",
+            "start": 31,
+            "end": 148
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p01",
+      "category": "paraphrased",
+      "gold": [
+        "impersonation",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "from the building management"
+        ],
+        "urgency": [
+          "by text today"
+        ]
+      },
+      "result": {
+        "message": "Quick heads up from the building management: we've had a few break-ins so we're asking tenants to confirm their door codes with us by text today. Reply with your code so we can update the system.",
+        "is_suspicious": false,
+        "summary": "The message is a routine request for security information and does not contain strong manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p02",
+      "category": "paraphrased",
+      "gold": [
+        "urgency",
+        "isolation"
+      ],
+      "gold_evidence": {
+        "urgency": [
+          "before 5"
+        ],
+        "isolation": [
+          "Don't mention it to Priya"
+        ]
+      },
+      "result": {
+        "message": "Mate I'm in a bit of a jam, car got towed and they only take payment at the pound before 5. Can you lend me 300 till Friday? Don't mention it to Priya, she thinks I've sorted my finances.",
+        "is_suspicious": false,
+        "summary": "This message is a personal request for help and does not contain strong manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p03",
+      "category": "paraphrased",
+      "gold": [
+        "reward",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "£120 loyalty bonus"
+        ],
+        "urgency": [
+          "within 48 hrs"
+        ]
+      },
+      "result": {
+        "message": "We noticed you haven't collected the £120 loyalty bonus sitting in your account. Bonuses that aren't claimed within 48 hrs are released back into the pool.",
+        "is_suspicious": true,
+        "summary": "The message is trying to make you act quickly to avoid losing money.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "Bonuses that aren't claimed within 48 hrs are released back into the pool."
+            ],
+            "explanation": "This phrase creates a sense of urgency by suggesting that the bonus will be lost if not claimed within 48 hours, pressuring you to act quickly without verifying the claim.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "Bonuses that aren't claimed within 48 hrs are released back into the pool.",
+            "start": 81,
+            "end": 155
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p04",
+      "category": "paraphrased",
+      "gold": [
+        "impersonation",
+        "threat",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "from the court registry"
+        ],
+        "threat": [
+          "carries a contempt charge"
+        ],
+        "urgency": [
+          "resolved today"
+        ]
+      },
+      "result": {
+        "message": "Good afternoon. I'm calling from the court registry regarding a missed jury summons. Non-attendance carries a contempt charge. This can be resolved today by paying the administrative fee over the phone.",
+        "is_suspicious": true,
+        "summary": "The message is trying to create urgency by suggesting immediate action is needed to avoid legal consequences.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "Non-attendance carries a contempt charge. This can be resolved today by paying the administrative fee over the phone."
+            ],
+            "explanation": "The message warns that non-attendance will result in a contempt charge and suggests resolving it immediately, which creates a sense of urgency.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "Non-attendance carries a contempt charge. This can be resolved today by paying the administrative fee over the phone.",
+            "start": 85,
+            "end": 202
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p05",
+      "category": "paraphrased",
+      "gold": [
+        "threat",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "threat": [
+          "your wife would find very interesting"
+        ],
+        "urgency": [
+          "You have until Sunday"
+        ]
+      },
+      "result": {
+        "message": "I've got your browsing history and a few screenshots your wife would find very interesting. 0.05 BTC to the wallet below and this goes away. You have until Sunday.",
+        "is_suspicious": true,
+        "summary": "This message is threatening to share private information and is giving a deadline.",
+        "tactics": [
+          {
+            "label": "threat",
+            "evidence": [
+              "You have until Sunday.",
+              "I've got your browsing history and a few screenshots your wife would find very interesting."
+            ],
+            "explanation": "The message uses a deadline to create urgency and pressure the reader into paying quickly.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "threat",
+            "text": "I've got your browsing history and a few screenshots your wife would find very interesting.",
+            "start": 0,
+            "end": 91
+          },
+          {
+            "label": "threat",
+            "text": "You have until Sunday.",
+            "start": 141,
+            "end": 163
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p06",
+      "category": "paraphrased",
+      "gold": [
+        "impersonation",
+        "isolation"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "Your landlord asked me to pass this on"
+        ],
+        "isolation": [
+          "Don't bother him with questions"
+        ]
+      },
+      "result": {
+        "message": "Your landlord asked me to pass this on: the rent account has changed. Pay this month's rent to the new sort code below. Don't bother him with questions, he's travelling.",
+        "is_suspicious": false,
+        "summary": "The message is a straightforward communication about a change in rent payment details.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p07",
+      "category": "paraphrased",
+      "gold": [
+        "reward",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "60% below listing price"
+        ],
+        "urgency": [
+          "expires in ninety minutes"
+        ]
+      },
+      "result": {
+        "message": "A small group of early supporters is being let into the pre-sale at 60% below listing price. Allocation is first come first served and the wallet link expires in ninety minutes.",
+        "is_suspicious": true,
+        "summary": "The message creates urgency by mentioning a limited time offer and an expiring link.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "the wallet link expires in ninety minutes"
+            ],
+            "explanation": "This phrase pressures you to act quickly before the opportunity is lost.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "the wallet link expires in ninety minutes",
+            "start": 135,
+            "end": 176
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p08",
+      "category": "paraphrased",
+      "gold": [
+        "impersonation",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "Dad, my roommate"
+        ],
+        "urgency": [
+          "please just hurry"
+        ]
+      },
+      "result": {
+        "message": "Dad, my roommate got into an accident and I'm at the hospital with no wallet. The pharmacy needs 400 before they release her meds. Can you Venmo @helpnowx? I'll explain later, please just hurry.",
+        "is_suspicious": false,
+        "summary": "This message seems genuine and asks for immediate help in an emergency situation.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p09",
+      "category": "paraphrased",
+      "gold": [
+        "urgency",
+        "threat"
+      ],
+      "gold_evidence": {
+        "urgency": [
+          "in the next few hours"
+        ],
+        "threat": [
+          "roughly tripling your bill"
+        ]
+      },
+      "result": {
+        "message": "Our records show your energy supply contract lapsed. Without action in the next few hours the meter will be switched to the emergency tariff, roughly tripling your bill. Confirm your card details to keep your current rate.",
+        "is_suspicious": true,
+        "summary": "The message is trying to create a sense of urgency by demanding immediate action to avoid a significant increase in bills.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "Without action in the next few hours the meter will be switched to the emergency tariff, roughly tripling your bill."
+            ],
+            "explanation": "This phrase creates a sense of urgency by warning that not acting quickly will result in a large increase in bills.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "Without action in the next few hours the meter will be switched to the emergency tariff, roughly tripling your bill.",
+            "start": 53,
+            "end": 169
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p10",
+      "category": "paraphrased",
+      "gold": [
+        "reward",
+        "isolation"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "A sum is waiting for the rightful heir"
+        ],
+        "isolation": [
+          "Discretion is essential"
+        ]
+      },
+      "result": {
+        "message": "I represent the estate of a distant relative who shares your surname. A sum is waiting for the rightful heir and you appear to qualify. Discretion is essential as other claimants are circling.",
+        "is_suspicious": true,
+        "summary": "The message asks you to keep the matter private and suggests urgency by mentioning other claimants.",
+        "tactics": [
+          {
+            "label": "isolation",
+            "evidence": [
+              "Discretion is essential as other claimants are circling."
+            ],
+            "explanation": "This phrase pressures you to keep the matter secret, cutting off outside advice and potentially isolating you from support.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "isolation",
+            "text": "Discretion is essential as other claimants are circling.",
+            "start": 136,
+            "end": 192
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p11",
+      "category": "paraphrased",
+      "gold": [
+        "impersonation"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "The compliance desk at your brokerage"
+        ]
+      },
+      "result": {
+        "message": "The compliance desk at your brokerage flagged a transfer. To release the hold we just need you to read back the six-digit code we are about to send. This line is recorded for your protection.",
+        "is_suspicious": false,
+        "summary": "The message does not contain strong manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p12",
+      "category": "paraphrased",
+      "gold": [
+        "threat",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "threat": [
+          "The enforcement team visits on Thursday"
+        ],
+        "urgency": [
+          "before then"
+        ]
+      },
+      "result": {
+        "message": "You've got a court-ordered debt of 1,240 against your name. The enforcement team visits on Thursday. If you'd rather avoid that, settle a reduced figure by bank transfer before then.",
+        "is_suspicious": true,
+        "summary": "The message creates urgency by warning of a visit from enforcement team if the debt is not settled soon.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "The enforcement team visits on Thursday."
+            ],
+            "explanation": "This phrase creates a sense of urgency, pressuring you to act quickly to avoid a visit from the enforcement team.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "The enforcement team visits on Thursday.",
+            "start": 60,
+            "end": 100
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p13",
+      "category": "paraphrased",
+      "gold": [
+        "reward",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "match your first deposit two to one"
+        ],
+        "urgency": [
+          "Only three places left this round"
+        ]
+      },
+      "result": {
+        "message": "We've been watching your trading and you clearly have talent. Join our private mentorship circle and we'll match your first deposit two to one. Only three places left this round.",
+        "is_suspicious": true,
+        "summary": "The message offers a large reward but is vague and seems too good to be true.",
+        "tactics": [
+          {
+            "label": "reward",
+            "evidence": [
+              "we'll match your first deposit two to one"
+            ],
+            "explanation": "The offer of matching the first deposit with a two-to-one ratio is very attractive but sounds suspiciously easy, which might pressure you to act quickly without verifying its legitimacy.",
+            "confidence": 0.8
+          }
+        ],
+        "spans": [
+          {
+            "label": "reward",
+            "text": "we'll match your first deposit two to one",
+            "start": 101,
+            "end": 142
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p14",
+      "category": "paraphrased",
+      "gold": [
+        "impersonation",
+        "isolation"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "it's Grandma's carer"
+        ],
+        "isolation": [
+          "no need to trouble your mother with this"
+        ]
+      },
+      "result": {
+        "message": "Hi it's Grandma's carer. She's fine but the agency changed its billing. Please pay this week's hours to the account below. There's no need to trouble your mother with this, she has enough on.",
+        "is_suspicious": false,
+        "summary": "No strong manipulation tactics were used in this message.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p15",
+      "category": "paraphrased",
+      "gold": [
+        "impersonation",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "Reminder from the clinic"
+        ],
+        "urgency": [
+          "before the weekend"
+        ]
+      },
+      "result": {
+        "message": "Reminder from the clinic: your prescription renewal was declined by the pharmacy system. Pay the outstanding 18.50 through the link so we can release it before the weekend.",
+        "is_suspicious": true,
+        "summary": "The message is trying to create urgency by suggesting the prescription will be released before the weekend if action is taken immediately.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "before the weekend"
+            ],
+            "explanation": "Using a deadline (before the weekend) to pressure you into paying quickly without checking the details.",
+            "confidence": 0.8
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "before the weekend",
+            "start": 153,
+            "end": 171
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p16",
+      "category": "paraphrased",
+      "gold": [
+        "reward",
+        "isolation"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "personal cashback of 350"
+        ],
+        "isolation": [
+          "we'd ask you not to forward this email"
+        ]
+      },
+      "result": {
+        "message": "Because you were one of the first thousand users, the team has set aside a personal cashback of 350 for you. Nobody else at your company has access to this, so we'd ask you not to forward this email.",
+        "is_suspicious": true,
+        "summary": "The message suggests you are unique and asks you not to share it, which could be a tactic to isolate you.",
+        "tactics": [
+          {
+            "label": "isolation",
+            "evidence": [
+              "we'd ask you not to forward this email"
+            ],
+            "explanation": "Asking you not to forward the email cuts off outside advice and makes you rely on the sender's instructions.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "isolation",
+            "text": "we'd ask you not to forward this email",
+            "start": 160,
+            "end": 198
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p17",
+      "category": "paraphrased",
+      "gold": [
+        "impersonation",
+        "urgency"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "I'm the new treasurer of the parents' association"
+        ],
+        "urgency": [
+          "sort it tonight"
+        ]
+      },
+      "result": {
+        "message": "I'm the new treasurer of the parents' association. The bank froze our old account so this term's fees need to go to my personal account for now. Could you sort it tonight so I can close the books?",
+        "is_suspicious": false,
+        "summary": "The message is from someone claiming to be a treasurer and does not use any strong manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p18",
+      "category": "paraphrased",
+      "gold": [
+        "threat"
+      ],
+      "gold_evidence": {
+        "threat": [
+          "Investigators will treat you as a suspect"
+        ]
+      },
+      "result": {
+        "message": "Someone used your identity to rent a car that was later involved in a crime. Investigators will treat you as a suspect unless you cooperate. Transfer your savings to the protected account we provide while the case is open.",
+        "is_suspicious": true,
+        "summary": "The message warns of legal consequences if you do not cooperate, which is a common tactic to pressure people into acting quickly.",
+        "tactics": [
+          {
+            "label": "threat",
+            "evidence": [
+              "Investigators will treat you as a suspect unless you cooperate."
+            ],
+            "explanation": "This phrase warns that you will be treated as a suspect if you do not follow their instructions, creating fear and urgency.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "threat",
+            "text": "Investigators will treat you as a suspect unless you cooperate.",
+            "start": 77,
+            "end": 140
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p19",
+      "category": "paraphrased",
+      "gold": [
+        "urgency",
+        "threat"
+      ],
+      "gold_evidence": {
+        "urgency": [
+          "closes at noon"
+        ],
+        "threat": [
+          "no refund is possible"
+        ]
+      },
+      "result": {
+        "message": "Your subscription box is stuck at the depot and the slot for redelivery closes at noon. A small rebooking charge applies, otherwise the box goes back to the warehouse and no refund is possible.",
+        "is_suspicious": true,
+        "summary": "The message creates urgency by mentioning a deadline and potential loss if not acted upon.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "the slot for redelivery closes at noon"
+            ],
+            "explanation": "This phrase pressures you to act quickly before the opportunity is lost.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "the slot for redelivery closes at noon",
+            "start": 48,
+            "end": 86
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "p20",
+      "category": "paraphrased",
+      "gold": [
+        "impersonation",
+        "isolation"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "This is Sergeant Lee, Metropolitan Police"
+        ],
+        "isolation": [
+          "you must not contact your bank or anyone else about this"
+        ]
+      },
+      "result": {
+        "message": "This is Sergeant Lee, Metropolitan Police. We arrested a man with a cloned copy of your card. For the operation to work you must not contact your bank or anyone else about this. Withdraw the cash and hand it to our courier for fingerprinting.",
+        "is_suspicious": true,
+        "summary": "The message asks you not to contact your bank, which is a red flag.",
+        "tactics": [
+          {
+            "label": "isolation",
+            "evidence": [
+              "We arrested a man with a cloned copy of your card. For the operation to work you must not contact your bank or anyone else about this."
+            ],
+            "explanation": "This phrase pressures you to keep the matter secret and not involve your bank, cutting off potential help or verification.",
+            "confidence": 1.0
+          }
+        ],
+        "spans": [
+          {
+            "label": "isolation",
+            "text": "We arrested a man with a cloned copy of your card. For the operation to work you must not contact your bank or anyone else about this.",
+            "start": 43,
+            "end": 177
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "b01",
+      "category": "benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Hi Sam, running about 10 minutes late, can you grab me a flat white? Thanks!",
+        "is_suspicious": false,
+        "summary": "This is a friendly request and does not contain any manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "b02",
+      "category": "benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Reminder: your dentist appointment is on Tuesday 14 Oct at 9:30am. Reply C to confirm or call us on 020 7946 0000 to reschedule.",
+        "is_suspicious": false,
+        "summary": "This message appears to be a regular reminder and does not contain any suspicious tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "b03",
+      "category": "benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Your Amazon order #112-4455667 has been dispatched and will arrive on Thursday. Track your package in the app.",
+        "is_suspicious": false,
+        "summary": "This message appears to be a routine update about an Amazon order and does not contain any suspicious tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "b04",
+      "category": "benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Mum, landed safely in Lisbon. Hotel is lovely, will call you tomorrow after breakfast. Love you x",
+        "is_suspicious": false,
+        "summary": "This message appears to be a personal update from a family member and does not contain any suspicious manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "b05",
+      "category": "benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Team, the sprint retro is moved to 3pm Friday in Room 4B. Please add your notes to the board beforehand.",
+        "is_suspicious": false,
+        "summary": "This message is a regular communication about a team meeting and does not contain any manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "b06",
+      "category": "benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Your one-time passcode is 482913. It expires in 10 minutes. If you did not request this code, you can ignore this message.",
+        "is_suspicious": true,
+        "summary": "The message creates urgency by stating the passcode expires soon.",
+        "tactics": [
+          {
+            "label": "urgency",
+            "evidence": [
+              "It expires in 10 minutes."
+            ],
+            "explanation": "This phrase pressures you to act quickly before the passcode expires.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "urgency",
+            "text": "It expires in 10 minutes.",
+            "start": 34,
+            "end": 59
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "b07",
+      "category": "benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Thanks for shopping with Tesco. You earned 45 Clubcard points today. View your balance in the Tesco app.",
+        "is_suspicious": false,
+        "summary": "This message appears to be a routine notification from Tesco and does not contain any suspicious tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "b08",
+      "category": "benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Hey! Are we still on for football Sunday? I can drive if you want, let me know by tomorrow so I can book the pitch.",
+        "is_suspicious": false,
+        "summary": "This message is a friendly invitation and does not contain any manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "b09",
+      "category": "benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Your electricity bill for September is £86.20 and will be collected by Direct Debit on 15 October. Log in to your account to view the statement.",
+        "is_suspicious": false,
+        "summary": "This message appears to be a normal utility bill reminder.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "b10",
+      "category": "benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Happy birthday Alex!! Hope you have a brilliant day, drinks are on me next week.",
+        "is_suspicious": false,
+        "summary": "This message appears to be a friendly birthday greeting and does not contain any suspicious tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "b11",
+      "category": "benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "School notice: Year 6 swimming lessons start next Monday. Please send swimwear and a towel in a named bag.",
+        "is_suspicious": false,
+        "summary": "This message appears to be a regular school notice and does not contain any suspicious manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "b12",
+      "category": "benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Hi, this is Dr Patel's surgery. Your blood test results are back and are normal. No further action is needed.",
+        "is_suspicious": false,
+        "summary": "This message appears to be from a legitimate doctor's surgery and does not contain any suspicious tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "b13",
+      "category": "benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Your table for 4 at Luigi's is confirmed for Saturday at 7:30pm. We look forward to seeing you.",
+        "is_suspicious": false,
+        "summary": "This message appears to be a normal confirmation and does not contain any suspicious manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "b14",
+      "category": "benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Library reminder: 'The Overstory' is due back on 20 October. You can renew online if nobody else has reserved it.",
+        "is_suspicious": false,
+        "summary": "This message is a reminder and does not contain any manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "b15",
+      "category": "benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Can you send me the recipe for that lentil soup you made? Dad wants to try it this weekend.",
+        "is_suspicious": false,
+        "summary": "This message is a friendly request and does not contain any suspicious manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "hb01",
+      "category": "hard_benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Barclays: Did you attempt a payment of £249.99 to Currys today? Reply Y if yes or N if no. We will never ask you to move money or share your PIN.",
+        "is_suspicious": false,
+        "summary": "The message does not contain strong manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "hb02",
+      "category": "hard_benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Your one-time passcode is 731 904. Do not share this code with anyone, including bank staff. If you did not request it, call the number on the back of your card.",
+        "is_suspicious": true,
+        "summary": "The message is trying to keep the passcode secret, which could be a tactic to prevent others from helping if something goes wrong.",
+        "tactics": [
+          {
+            "label": "isolation",
+            "evidence": [
+              "Do not share this code with anyone, including bank staff."
+            ],
+            "explanation": "By asking you not to share the passcode with anyone, including bank staff, the message is trying to isolate you and prevent others from helping if something goes wrong.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "isolation",
+            "text": "Do not share this code with anyone, including bank staff.",
+            "start": 35,
+            "end": 92
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "hb03",
+      "category": "hard_benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "DPD: Your parcel from ASOS is arriving today between 14:10 and 15:10. No action needed. If you're out, we'll leave it with a neighbour or in your safe place.",
+        "is_suspicious": false,
+        "summary": "This message appears to be from a legitimate delivery service and does not contain any suspicious tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "hb04",
+      "category": "hard_benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Hi, this is Maria from the letting agency. Your tenancy renewal paperwork is due back by 31 October. No rush, but let me know if you have any questions about the terms.",
+        "is_suspicious": false,
+        "summary": "No strong manipulation tactics were used in this message.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "hb05",
+      "category": "hard_benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Thames Water: Planned maintenance means your water may be off between 09:00 and 13:00 on Wednesday 15 October. We apologise for the inconvenience.",
+        "is_suspicious": false,
+        "summary": "This message appears to be a routine notification and does not contain any suspicious manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "hb06",
+      "category": "hard_benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Your council tax instalment of £142 was not collected because the Direct Debit was declined. You can pay online, by phone, or wait for the next scheduled collection. See your account for details.",
+        "is_suspicious": false,
+        "summary": "The message is a standard notification and does not contain any manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "hb07",
+      "category": "hard_benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "NHS: Your flu vaccination is now available. Book at your GP practice or any participating pharmacy. There is no charge for eligible patients.",
+        "is_suspicious": false,
+        "summary": "The message appears to be from a legitimate source and does not contain any suspicious tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "hb08",
+      "category": "hard_benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Hey it's Tom, lost my phone on the train yesterday so texting from Jess's. Can you resend me the address for Saturday? Not urgent.",
+        "is_suspicious": false,
+        "summary": "No strong manipulation tactics were used in this message.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "hb09",
+      "category": "hard_benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Cancer Research UK: Thank you for your monthly gift. Your support funds life-saving research. To change or cancel your donation at any time, visit your supporter account.",
+        "is_suspicious": false,
+        "summary": "This message appears to be from a legitimate charity and does not contain any suspicious tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "hb10",
+      "category": "hard_benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Monzo: We've blocked a card payment of £89 at a merchant in Lagos that looked unusual. If this was you, you can approve it in the app. If not, freeze your card in the app.",
+        "is_suspicious": false,
+        "summary": "The message is from Monzo and does not contain any strong manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "hb11",
+      "category": "hard_benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Reminder from the HR team: open enrolment for health benefits closes on 30 November. Changes made after that date will take effect next year.",
+        "is_suspicious": false,
+        "summary": "This message is a regular reminder and does not contain any manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "hb12",
+      "category": "hard_benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "This is a message from the Metropolitan Police. Your report (ref 4521/0923) has been received. An officer may contact you within 10 working days. You can check progress online.",
+        "is_suspicious": false,
+        "summary": "The message appears to be from a trusted authority and does not contain any strong manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "hb13",
+      "category": "hard_benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Your Netflix payment didn't go through. Update your payment method in the app at your convenience to keep watching. We'll try again in a few days.",
+        "is_suspicious": false,
+        "summary": "No strong manipulation tactics were used in this message.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "hb14",
+      "category": "hard_benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Hi Dad, can you lend me £40 until payday on Friday? Rent came out early. I'll send it back as soon as I'm paid, promise.",
+        "is_suspicious": false,
+        "summary": "This message is a personal request for help and does not contain any manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "hb15",
+      "category": "hard_benign",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "HMRC: You have a new message in your Personal Tax Account. Sign in through GOV.UK to read it. We will never include a link in a text message.",
+        "is_suspicious": true,
+        "summary": "The message tries to make you act quickly by signing in through a link, which could be a scam.",
+        "tactics": [
+          {
+            "label": "impersonation",
+            "evidence": [
+              "HMRC: You have a new message in your Personal Tax Account. Sign in through GOV.UK to read it. We will never include a link in a text message."
+            ],
+            "explanation": "It claims to be from HMRC and asks you to sign in through a link, which is suspicious because official communications typically do not include links in text messages.",
+            "confidence": 0.9
+          }
+        ],
+        "spans": [
+          {
+            "label": "impersonation",
+            "text": "HMRC: You have a new message in your Personal Tax Account. Sign in through GOV.UK to read it. We will never include a link in a text message.",
+            "start": 0,
+            "end": 141
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ss01",
+      "category": "subtle_scam",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "Hi, is this Rachel? Sorry, I think I have the wrong number. You seem nice though, how is your week going?",
+        "is_suspicious": false,
+        "summary": "This message does not contain any suspicious manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ss02",
+      "category": "subtle_scam",
+      "gold": [
+        "reward"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "you keep the balance as a welcome bonus"
+        ]
+      },
+      "result": {
+        "message": "Thanks for applying. The role is fully remote and the pay is $38 an hour. There is a short training period during which we will send you a cheque to buy a laptop from our supplier; you keep the balance as a welcome bonus.",
+        "is_suspicious": true,
+        "summary": "The message offers a high-paying job with an upfront cost, which is suspicious.",
+        "tactics": [
+          {
+            "label": "reward",
+            "evidence": [
+              "There is a short training period during which we will send you a cheque to buy a laptop from our supplier; you keep the balance as a welcome bonus."
+            ],
+            "explanation": "This suggests you need to spend money on a laptop to get the job, which is unusual and may be a scam.",
+            "confidence": 0.8
+          }
+        ],
+        "spans": [
+          {
+            "label": "reward",
+            "text": "There is a short training period during which we will send you a cheque to buy a laptop from our supplier; you keep the balance as a welcome bonus.",
+            "start": 74,
+            "end": 221
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ss03",
+      "category": "subtle_scam",
+      "gold": [
+        "reward"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "It has changed my life"
+        ]
+      },
+      "result": {
+        "message": "I have been investing with a small fund for the past year and the results have been steady. I do not usually recommend things, but if you ever want to see my statements, I would be happy to share them. It has changed my life.",
+        "is_suspicious": false,
+        "summary": "No strong manipulation tactics were found in this message.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ss04",
+      "category": "subtle_scam",
+      "gold": [
+        "impersonation"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "routine review of your account"
+        ]
+      },
+      "result": {
+        "message": "Good morning. We are completing a routine review of your account and need to reconfirm a few details. There is no problem at this stage. Please reply with your full name, date of birth and the last four digits of your card so we can proceed.",
+        "is_suspicious": false,
+        "summary": "The message is routine and does not contain any strong manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ss05",
+      "category": "subtle_scam",
+      "gold": [
+        "isolation"
+      ],
+      "gold_evidence": {
+        "isolation": [
+          "I know we have not met in person yet"
+        ]
+      },
+      "result": {
+        "message": "Hi love, I know we have not met in person yet, but I think about you every day. My contract here ends soon and I want to visit. The agency needs a small deposit for the flight paperwork. Would you be able to help with that?",
+        "is_suspicious": false,
+        "summary": "The message is a friendly request and does not contain any strong manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ss06",
+      "category": "subtle_scam",
+      "gold": [
+        "reward"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "pre-approved for a personal loan of up to £15,000 at 3.1% APR regardless of credit history"
+        ]
+      },
+      "result": {
+        "message": "You have been pre-approved for a personal loan of up to £15,000 at 3.1% APR regardless of credit history. To receive the funds, a one-time processing fee of £95 is payable in advance.",
+        "is_suspicious": true,
+        "summary": "The message offers a loan with a processing fee, which is a common tactic to get people to pay upfront.",
+        "tactics": [
+          {
+            "label": "reward",
+            "evidence": [
+              "You have been pre-approved for a personal loan of up to £15,000 at 3.1% APR regardless of credit history."
+            ],
+            "explanation": "The message suggests you can get a loan without a bad credit history and offers a high amount, which might seem too good to be true.",
+            "confidence": 0.8
+          },
+          {
+            "label": "threat",
+            "evidence": [
+              "To receive the funds, a one-time processing fee of £95 is payable in advance."
+            ],
+            "explanation": "The message implies that paying the fee is necessary to receive the loan, creating pressure to act quickly and avoid missing out.",
+            "confidence": 0.7
+          }
+        ],
+        "spans": [
+          {
+            "label": "reward",
+            "text": "You have been pre-approved for a personal loan of up to £15,000 at 3.1% APR regardless of credit history.",
+            "start": 0,
+            "end": 105
+          },
+          {
+            "label": "threat",
+            "text": "To receive the funds, a one-time processing fee of £95 is payable in advance.",
+            "start": 106,
+            "end": 183
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ss07",
+      "category": "subtle_scam",
+      "gold": [
+        "reward",
+        "impersonation"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "The listing is complimentary"
+        ],
+        "impersonation": [
+          "on behalf of a well-known publisher"
+        ]
+      },
+      "result": {
+        "message": "Hello, I am reaching out on behalf of a well-known publisher. We would like to feature your business in our next edition. The listing is complimentary; only a modest artwork fee applies.",
+        "is_suspicious": false,
+        "summary": "The message appears to be a standard promotional offer and does not contain strong manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ss08",
+      "category": "subtle_scam",
+      "gold": [
+        "reward"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "Most members made back their first month's fee in a week or two"
+        ]
+      },
+      "result": {
+        "message": "I noticed we both follow the same crypto community. I run a small group where we share entries. Most members made back their first month's fee in a week or two. Happy to add you if you are interested, no pressure.",
+        "is_suspicious": false,
+        "summary": "The message does not contain any strong manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ss09",
+      "category": "subtle_scam",
+      "gold": [
+        "impersonation",
+        "isolation"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "Hi Grandad, it's Ollie"
+        ],
+        "isolation": [
+          "I'd prefer Mum didn't know yet"
+        ]
+      },
+      "result": {
+        "message": "Hi Grandad, it's Ollie. I'm okay but I've had a bit of trouble and I'd rather explain in person. Could you pop some money into this account for now? I'd prefer Mum didn't know yet.",
+        "is_suspicious": true,
+        "summary": "The message is from someone asking for money and wants to keep it secret.",
+        "tactics": [
+          {
+            "label": "isolation",
+            "evidence": [
+              "I'd prefer Mum didn't know yet"
+            ],
+            "explanation": "Asks not to tell Mum, which could be a way to avoid her checking the situation.",
+            "confidence": 0.8
+          }
+        ],
+        "spans": [
+          {
+            "label": "isolation",
+            "text": "I'd prefer Mum didn't know yet",
+            "start": 149,
+            "end": 179
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ss10",
+      "category": "subtle_scam",
+      "gold": [
+        "impersonation",
+        "reward"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "government-backed insulation grant"
+        ],
+        "reward": [
+          "eligible for a government-backed insulation grant"
+        ]
+      },
+      "result": {
+        "message": "Dear homeowner, our records indicate you may be eligible for a government-backed insulation grant. Eligibility is limited to certain postcodes. A surveyor can visit this week to confirm; a refundable booking deposit secures the slot.",
+        "is_suspicious": false,
+        "summary": "The message does not contain strong manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ss11",
+      "category": "subtle_scam",
+      "gold": [
+        "reward"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "offer a complimentary two-night stay"
+        ]
+      },
+      "result": {
+        "message": "Your recent review of the Harbour Hotel was appreciated. As a thank you we would like to offer a complimentary two-night stay. A small booking fee is required to hold the room and is refunded on arrival.",
+        "is_suspicious": true,
+        "summary": "The message seems legitimate and offers a reward, but the small booking fee is unusual for a complimentary offer.",
+        "tactics": [
+          {
+            "label": "reward",
+            "evidence": [
+              "As a thank you we would like to offer a complimentary two-night stay"
+            ],
+            "explanation": "The message suggests a reward by offering a free stay, which might seem attractive and motivate the reader to respond.",
+            "confidence": 0.8
+          },
+          {
+            "label": "threat",
+            "evidence": [
+              "A small booking fee is required to hold the room and is refunded on arrival"
+            ],
+            "explanation": "The requirement of a booking fee could be seen as a threat or penalty if not paid, as it implies the offer might be lost.",
+            "confidence": 0.7
+          }
+        ],
+        "spans": [
+          {
+            "label": "reward",
+            "text": "As a thank you we would like to offer a complimentary two-night stay",
+            "start": 57,
+            "end": 125
+          },
+          {
+            "label": "threat",
+            "text": "A small booking fee is required to hold the room and is refunded on arrival",
+            "start": 127,
+            "end": 202
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ss12",
+      "category": "subtle_scam",
+      "gold": [
+        "reward"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "you may be eligible to recover a previous loss"
+        ]
+      },
+      "result": {
+        "message": "We are a recovery firm that specialises in retrieving funds lost to online fraud. Our records show you may be eligible to recover a previous loss. There is no upfront charge beyond a small case registration fee.",
+        "is_suspicious": true,
+        "summary": "The message offers a reward with a small upfront fee, which could be a tactic to get you to pay first.",
+        "tactics": [
+          {
+            "label": "reward",
+            "evidence": [
+              "There is no upfront charge beyond a small case registration fee."
+            ],
+            "explanation": "By mentioning a small case registration fee, the message tries to make you feel like you need to act quickly to avoid missing out on the recovery of your lost funds.",
+            "confidence": 0.8
+          }
+        ],
+        "spans": [
+          {
+            "label": "reward",
+            "text": "There is no upfront charge beyond a small case registration fee.",
+            "start": 147,
+            "end": 211
+          }
+        ],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ss13",
+      "category": "subtle_scam",
+      "gold": [
+        "impersonation"
+      ],
+      "gold_evidence": {
+        "impersonation": [
+          "this is the delivery driver"
+        ]
+      },
+      "result": {
+        "message": "Hi, this is the delivery driver. I've got a package for you but the address label is smudged. Can you confirm your full address and the card you paid with so I can match it to the order?",
+        "is_suspicious": false,
+        "summary": "This message does not contain any strong manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ss14",
+      "category": "subtle_scam",
+      "gold": [],
+      "gold_evidence": {},
+      "result": {
+        "message": "I saw your post about the flat. I'm currently abroad for work so I can't do a viewing, but I'm happy to pay the deposit and first month today to secure it. Could you send your bank details?",
+        "is_suspicious": false,
+        "summary": "This message seems legitimate as it's a request for bank details to secure a property, which is a normal part of the rental process.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    },
+    {
+      "id": "ss15",
+      "category": "subtle_scam",
+      "gold": [
+        "reward"
+      ],
+      "gold_evidence": {
+        "reward": [
+          "you qualify for our loyalty cashback programme"
+        ]
+      },
+      "result": {
+        "message": "As a long-standing customer you qualify for our loyalty cashback programme. Nothing is required from you except confirming the card you would like the cashback paid to.",
+        "is_suspicious": false,
+        "summary": "The message seems legitimate and does not contain strong manipulation tactics.",
+        "tactics": [],
+        "spans": [],
+        "rejected_quotes": [],
+        "attempts": 1,
+        "provider": "openai",
+        "model": "Qwen/Qwen2.5-7B-Instruct",
+        "from_cache": false,
+        "error": null
+      }
+    }
+  ]
+}
