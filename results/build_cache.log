@@ -1,0 +1,67 @@
+INFO:scamantics:retrying: 3 rejected quotes
+Ollama ok, model gemma4:12b
+ok (1x): ['urgency', 'impersonation', 'threat', 'isolation'] URGENT: Your HSBC account has been locked due to s
+ok (1x): ['reward', 'urgency'] Congratulations! You have been selected as our luc
+ok (1x): ['impersonation', 'urgency', 'isolation'] Hi Mum, it's me. I dropped my phone in the sink so
+ok (1x): ['impersonation', 'urgency', 'threat'] This is Officer Daniels from the Australian Taxati
+ok (1x): ['urgency', 'impersonation', 'threat'] Your parcel could not be delivered because of an u
+ok (1x): [] Hi Sam, running about 10 minutes late, can you gra
+ok (1x): [] Reminder: your dentist appointment is on Tuesday 1
+ok (1x): ['urgency', 'impersonation'] Netflix: We were unable to process your payment. U
+ok (1x): ['impersonation', 'urgency', 'threat'] I am a Microsoft certified technician. We have det
+ok (1x): ['impersonation', 'reward', 'isolation'] Dear friend, I am Barrister James Okoro. My late c
+ok (1x): ['urgency', 'threat'] I have recorded you through your webcam visiting a
+ok (1x): ['urgency', 'impersonation'] Your Apple ID has been used to purchase an iPhone 
+ok (1x): ['reward', 'urgency'] Guaranteed 30% monthly returns on our crypto tradi
+ok (1x): ['impersonation', 'urgency', 'threat'] FINAL NOTICE from the Department for Work and Pens
+ok (1x): ['impersonation', 'urgency', 'isolation'] Hi, this is Amazon Customer Service. A suspicious 
+ok (1x): ['impersonation', 'reward', 'urgency'] You have 1 unclaimed tax refund of £386.40 from HM
+ok (1x): ['impersonation', 'urgency'] Hey, it's John from the IT department. We're rolli
+ok (1x): ['impersonation', 'urgency'] Dear valued customer, your Chase debit card has be
+ok (2x): ['reward', 'urgency'] Work from home and earn $5,000 per week with only 
+ok (1x): ['urgency', 'impersonation', 'isolation'] Babe, I know we have only been talking for two wee
+ok (1x): ['impersonation', 'urgency', 'threat'] This is the Social Security Administration. Your s
+ok (1x): ['urgency', 'impersonation'] Your PayPal account will be permanently limited. W
+ok (1x): ['impersonation', 'reward'] Hello, I am a recruiter with Tesla. We would like 
+ok (1x): ['urgency', 'impersonation', 'threat'] Your Google account storage is full and your photo
+ok (1x): ['reward'] You have been chosen to receive a free iPhone 16 a
+ok (1x): ['impersonation', 'urgency', 'isolation'] This is your bank's fraud team. Someone is trying 
+ok (1x): ['urgency', 'threat', 'impersonation'] WARNING: Unpaid toll detected. Your vehicle will b
+ok (1x): ['impersonation', 'urgency'] Quick heads up from the building management: we've
+ok (1x): ['urgency', 'isolation', 'impersonation'] Mate I'm in a bit of a jam, car got towed and they
+ok (1x): ['reward', 'urgency'] We noticed you haven't collected the £120 loyalty 
+ok (1x): ['impersonation', 'threat', 'urgency'] Good afternoon. I'm calling from the court registr
+ok (1x): ['threat', 'urgency'] I've got your browsing history and a few screensho
+ok (1x): ['impersonation', 'isolation'] Your landlord asked me to pass this on: the rent a
+ok (1x): ['urgency', 'reward'] A small group of early supporters is being let int
+ok (1x): ['urgency', 'impersonation'] Dad, my roommate got into an accident and I'm at t
+ok (1x): ['urgency', 'threat'] Our records show your energy supply contract lapse
+ok (1x): ['reward', 'isolation'] I represent the estate of a distant relative who s
+ok (1x): ['impersonation'] The compliance desk at your brokerage flagged a tr
+ok (1x): ['urgency', 'impersonation', 'threat'] You've got a court-ordered debt of 1,240 against y
+ok (1x): ['reward', 'urgency'] We've been watching your trading and you clearly h
+ok (1x): ['impersonation', 'isolation'] Hi it's Grandma's carer. She's fine but the agency
+ok (1x): ['urgency', 'impersonation'] Reminder from the clinic: your prescription renewa
+ok (1x): ['reward', 'isolation'] Because you were one of the first thousand users, 
+ok (1x): ['impersonation', 'urgency'] I'm the new treasurer of the parents' association.
+ok (1x): ['urgency', 'impersonation', 'threat'] Someone used your identity to rent a car that was 
+ok (1x): ['urgency', 'threat'] Your subscription box is stuck at the depot and th
+ok (1x): ['impersonation', 'isolation'] This is Sergeant Lee, Metropolitan Police. We arre
+ok (1x): [] Your Amazon order #112-4455667 has been dispatched
+ok (1x): [] Mum, landed safely in Lisbon. Hotel is lovely, wil
+ok (1x): [] Team, the sprint retro is moved to 3pm Friday in R
+ok (1x): [] Your one-time passcode is 482913. It expires in 10
+ok (1x): [] Thanks for shopping with Tesco. You earned 45 Club
+ok (1x): [] Hey! Are we still on for football Sunday? I can dr
+ok (1x): [] Your electricity bill for September is £86.20 and 
+ok (1x): [] Happy birthday Alex!! Hope you have a brilliant da
+ok (1x): [] School notice: Year 6 swimming lessons start next 
+ok (1x): [] Hi, this is Dr Patel's surgery. Your blood test re
+ok (1x): [] Your table for 4 at Luigi's is confirmed for Satur
+ok (1x): [] Library reminder: 'The Overstory' is due back on 2
+ok (1x): [] Can you send me the recipe for that lentil soup yo
+saved 60 entries to data/demo_cache.json
+
+real	4m4.573s
+user	0m15.928s
+sys	0m0.411s

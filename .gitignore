@@ -1,0 +1,7 @@
+Scamantics_Project_Implementation_Plan.docx
+.env
+__pycache__/
+*.pyc
+.pytest_cache/
+.gradio/
+flagged/

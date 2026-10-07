@@ -1,0 +1,83 @@
+provider: Ollama ok, model gemma4:12b
+[ 1/60] f01   0.0s gold=['urgency', 'impersonation', 'isolation', 'threat'] pred=['urgency', 'impersonation', 'threat', 'isolation']
+[ 2/60] f02   0.0s gold=['reward', 'urgency'] pred=['reward', 'urgency']
+[ 3/60] f03   0.0s gold=['impersonation', 'urgency', 'isolation'] pred=['impersonation', 'urgency', 'isolation']
+[ 4/60] f04   0.0s gold=['impersonation', 'threat', 'urgency'] pred=['impersonation', 'urgency', 'threat']
+[ 5/60] f05   0.0s gold=['urgency', 'threat', 'impersonation'] pred=['urgency', 'impersonation', 'threat']
+[ 6/60] f06   0.0s gold=['impersonation', 'urgency', 'threat'] pred=['urgency', 'impersonation']  <- mismatch
+[ 7/60] f07   0.0s gold=['impersonation', 'threat', 'urgency'] pred=['impersonation', 'urgency', 'threat']
+[ 8/60] f08   0.0s gold=['reward', 'isolation', 'impersonation'] pred=['impersonation', 'reward', 'isolation']
+[ 9/60] f09   0.0s gold=['threat', 'urgency'] pred=['urgency', 'threat']
+[10/60] f10   0.0s gold=['impersonation', 'urgency'] pred=['urgency', 'impersonation']
+[11/60] f11   0.0s gold=['reward', 'urgency'] pred=['reward', 'urgency']
+[12/60] f12   0.0s gold=['impersonation', 'threat', 'urgency'] pred=['impersonation', 'urgency', 'threat']
+[13/60] f13   0.0s gold=['impersonation', 'isolation'] pred=['impersonation', 'urgency', 'isolation']  <- mismatch
+[14/60] f14   0.0s gold=['reward', 'impersonation', 'urgency'] pred=['impersonation', 'reward', 'urgency']
+[15/60] f15   0.0s gold=['impersonation', 'urgency'] pred=['impersonation', 'urgency']
+[16/60] f16   0.0s gold=['impersonation', 'urgency'] pred=['impersonation', 'urgency']
+[17/60] f17   0.0s gold=['reward', 'urgency'] pred=['reward', 'urgency']
+[18/60] f18   0.0s gold=['isolation', 'urgency'] pred=['urgency', 'impersonation', 'isolation']  <- mismatch
+[19/60] f19   0.0s gold=['impersonation', 'threat', 'urgency'] pred=['impersonation', 'urgency', 'threat']
+[20/60] f20   0.0s gold=['impersonation', 'threat', 'urgency'] pred=['urgency', 'impersonation']  <- mismatch
+[21/60] f21   0.0s gold=['impersonation', 'reward'] pred=['impersonation', 'reward']
+[22/60] f22   0.0s gold=['impersonation', 'urgency', 'threat'] pred=['urgency', 'impersonation', 'threat']
+[23/60] f23   0.0s gold=['reward'] pred=['reward']
+[24/60] f24   0.0s gold=['impersonation', 'urgency', 'isolation'] pred=['impersonation', 'urgency', 'isolation']
+[25/60] f25   0.0s gold=['threat', 'urgency', 'impersonation'] pred=['urgency', 'threat', 'impersonation']
+[26/60] p01   0.0s gold=['impersonation', 'urgency'] pred=['impersonation', 'urgency']
+[27/60] p02   0.0s gold=['urgency', 'isolation'] pred=['urgency', 'isolation', 'impersonation']  <- mismatch
+[28/60] p03   0.0s gold=['reward', 'urgency'] pred=['reward', 'urgency']
+[29/60] p04   0.0s gold=['impersonation', 'threat', 'urgency'] pred=['impersonation', 'threat', 'urgency']
+[30/60] p05   0.0s gold=['threat', 'urgency'] pred=['threat', 'urgency']
+[31/60] p06   0.0s gold=['impersonation', 'isolation'] pred=['impersonation', 'isolation']
+[32/60] p07   0.0s gold=['reward', 'urgency'] pred=['urgency', 'reward']
+[33/60] p08   0.0s gold=['impersonation', 'urgency'] pred=['urgency', 'impersonation']
+[34/60] p09   0.0s gold=['urgency', 'threat'] pred=['urgency', 'threat']
+[35/60] p10   0.0s gold=['reward', 'isolation'] pred=['reward', 'isolation']
+[36/60] p11   0.0s gold=['impersonation'] pred=['impersonation']
+[37/60] p12   0.0s gold=['threat', 'urgency'] pred=['urgency', 'impersonation', 'threat']  <- mismatch
+[38/60] p13   0.0s gold=['reward', 'urgency'] pred=['reward', 'urgency']
+[39/60] p14   0.0s gold=['impersonation', 'isolation'] pred=['impersonation', 'isolation']
+[40/60] p15   0.0s gold=['impersonation', 'urgency'] pred=['urgency', 'impersonation']
+[41/60] p16   0.0s gold=['reward', 'isolation'] pred=['reward', 'isolation']
+[42/60] p17   0.0s gold=['impersonation', 'urgency'] pred=['impersonation', 'urgency']
+[43/60] p18   0.0s gold=['threat'] pred=['urgency', 'impersonation', 'threat']  <- mismatch
+[44/60] p19   0.0s gold=['urgency', 'threat'] pred=['urgency', 'threat']
+[45/60] p20   0.0s gold=['impersonation', 'isolation'] pred=['impersonation', 'isolation']
+[46/60] b01   0.0s gold=[] pred=[]
+[47/60] b02   0.0s gold=[] pred=[]
+[48/60] b03   0.0s gold=[] pred=[]
+[49/60] b04   0.0s gold=[] pred=[]
+[50/60] b05   0.0s gold=[] pred=[]
+[51/60] b06   0.0s gold=[] pred=[]
+[52/60] b07   0.0s gold=[] pred=[]
+[53/60] b08   0.0s gold=[] pred=[]
+[54/60] b09   0.0s gold=[] pred=[]
+[55/60] b10   0.0s gold=[] pred=[]
+[56/60] b11   0.0s gold=[] pred=[]
+[57/60] b12   0.0s gold=[] pred=[]
+[58/60] b13   0.0s gold=[] pred=[]
+[59/60] b14   0.0s gold=[] pred=[]
+[60/60] b15   0.0s gold=[] pred=[]
+
+metric                           all        benign      familiar   paraphrased
+n                                 60            15            25            20
+detection_accuracy             1.000         1.000         1.000         1.000
+detection_f1                   1.000         0.000         1.000         1.000
+false_positive_rate            0.000         0.000         0.000         0.000
+macro_f1                       0.968             -         0.970         0.964
+micro_f1                       0.962             -         0.969         0.951
+grounding_rate                 1.000         1.000         1.000         1.000
+span_f1                        0.771         0.000         0.793         0.736
+mean_attempts                  1.017         1.000         1.040         1.000
+errors                             0             0             0             0
+
+per-label F1 (all):
+  urgency        0.971
+  impersonation  0.933
+  isolation      1.000
+  reward         1.000
+  threat         0.938
+
+model: ollama:gemma4:12b   total time: 0.0s   avg: 0.0s/msg
+wrote results/eval_ollama_gemma4-12b.json
