@@ -37,6 +37,16 @@ Any other OpenAI-compatible server (vLLM, LM Studio, Together…) works with `SC
 
 If the backend is unreachable, the app serves precomputed answers from `data/demo_cache.json` for the built-in example messages, so the demo still runs offline. Rebuild the cache with `python scripts/build_demo_cache.py` (add `--all` to include the test set).
 
+## Interface
+
+The result panel shows a verdict banner with tactic chips, the original message with every verified evidence span highlighted and tagged, one card per tactic (definition, quoted evidence, plain-language explanation, model confidence), a "what you can do" box built from the tactics found, and the raw JSON. Light and dark themes are supported; the layout stacks on phones.
+
+For styling work, `scripts/ui_preview.py` launches the UI with a pre-rendered example from the demo cache (no model call):
+
+```bash
+SCAMANTICS_PROVIDER=mock python scripts/ui_preview.py 0 7862   # example index, port
+```
+
 ## Evaluation
 
 `data/test_set.jsonl` holds 60 annotated messages (25 familiar scam patterns, 20 paraphrased / structurally different scams, 15 benign) with gold tactic labels and evidence spans.
@@ -67,6 +77,7 @@ scamantics/
 data/test_set.jsonl         labelled test set
 data/demo_cache.json        cached results for the UI examples
 scripts/build_demo_cache.py
+scripts/ui_preview.py       launch the UI with a pre-rendered example (for screenshots)
 tests/                      pytest suite (no network required)
 ```
 
