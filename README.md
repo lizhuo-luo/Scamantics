@@ -34,6 +34,8 @@ Paste a suspicious text and Scamantics names the manipulation tactics it uses, q
 | **Grounds** | every tactic in a verbatim quote from the message, checked by code, not by the model |
 | **Explains** | each tactic for a non-expert, with practical advice on what to do next |
 
+**Runs anywhere.** The LLM is pluggable: a local Ollama, SGLang or vLLM server (free, no data leaves the machine) or a cloud API (Groq, Gemini, OpenRouter, DeepSeek, OpenAI, Anthropic). Structured output is requested from every backend so labels and fields stay well-formed, and a code-level validator checks every quote regardless of which model produced it. See [Choosing an LLM backend](#choosing-an-llm-backend).
+
 What it does **not** do: decide whether a message is fraudulent, check who sent it, follow links, or replace advice from your bank or the police.
 
 ## Quick start
