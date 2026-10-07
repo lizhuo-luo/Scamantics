@@ -1,8 +1,9 @@
 # Scamantics
 
-**Scamantics explains *how* a message tries to manipulate you. It is not a scam detector.**
+**Explainable analysis of how a message tries to manipulate you.**
+Paste a suspicious text and Scamantics names the manipulation tactics it uses, quotes the exact phrases as evidence, and explains each one in plain language.
 
-Paste a suspicious text message and Scamantics shows which manipulation tactics it uses, quotes the exact phrases as evidence, and explains them in plain language. The goal is educational: to help a non-expert recognise persuasive and coercive patterns and then make their own decision. Scamantics never says "this is a scam"; a message can use pressure tactics and still be legitimate, and a scam can be written without any of them.
+> Scamantics is an educational aid, **not a scam detector**. It never says "this is a scam". A message can use pressure tactics and still be legitimate, and a scam can be written without any of them. The user makes the call; Scamantics shows them what to look at.
 
 ![Scamantics analysing a fake bank alert](docs/screenshots/result-light.png)
 
@@ -12,94 +13,132 @@ Paste a suspicious text message and Scamantics shows which manipulation tactics 
 ![Scamantics in dark mode](docs/screenshots/result-dark.png)
 </details>
 
-## How it works
+## Contents
 
-```
-message ─► one LLM call (detect + identify + quote + explain, JSON schema)
-        ─► deterministic validator: every quote must appear verbatim in the message
-               └─ invalid quotes rejected → one retry asking the model to fix them
-        ─► Gradio UI: highlighted evidence, tactic cards, safety disclaimer
-```
+1. [What it does](#what-it-does)
+2. [Quick start](#quick-start)
+3. [How it works](#how-it-works)
+4. [The five tactics](#the-five-tactics)
+5. [Choosing an LLM backend](#choosing-an-llm-backend)
+6. [Evaluation](#evaluation)
+7. [Limitations](#limitations)
+8. [Project layout](#project-layout)
+9. [Development](#development)
 
-1. **Detect and identify.** A pretrained LLM judges whether manipulation is present and labels the tactics from a fixed list of five.
-2. **Ground.** For each tactic the model must quote the exact words that support it.
-3. **Verify.** Python checks that every quote is a verbatim substring of the message. Quotes that are not are rejected; the model is asked once to correct them. A tactic with no surviving evidence is dropped, and a message with no verified evidence is never flagged.
-4. **Explain.** Each verified tactic is shown with its evidence, a plain-language explanation and a model confidence score.
+## What it does
 
-No model is trained. Swapping the LLM is a configuration change (see below).
+| | |
+|---|---|
+| **Detects** | whether a message contains persuasive or coercive patterns |
+| **Identifies** | one or more tactics from a fixed taxonomy of five |
+| **Grounds** | every tactic in a verbatim quote from the message, checked by code, not by the model |
+| **Explains** | each tactic for a non-expert, with practical advice on what to do next |
 
-## Why these five tactics?
-
-The taxonomy is deliberately small and fixed so that outputs are comparable across messages and models and so that each label has an operational definition a non-expert can check against the quoted evidence.
-
-| Label | Tactic | Grounding |
-|---|---|---|
-| `urgency` | Urgency | Time pressure stops the reader from verifying. It is the "pressure you to act immediately" sign in consumer-protection guidance and maps to scarcity in Cialdini's principles of influence and to the "time" principle in Stajano and Wilson's analysis of scam victims. |
-| `impersonation` | Impersonation / authority | Borrowing a trusted identity (bank, government, family member) is the "pretend to be an organisation you know" sign and corresponds to the authority principle. It is the entry point of most phishing and "Hi Mum" scams. |
-| `isolation` | Isolation / secrecy | Cutting the target off from second opinions ("don't tell the bank", "keep this between us") is characteristic of romance, courier and safe-account scams and is what makes the other tactics hard to break. |
-| `reward` | Reward / incentive | Prizes, refunds, jobs and guaranteed returns exploit what Stajano and Wilson call "need and greed"; it is the "there's a prize" half of the "problem or prize" sign. |
-| `threat` | Threat / penalty | Arrest, fines, account closure and exposure exploit fear; it is the "there's a problem" half of "problem or prize" and the coercive counterpart of reward. |
-
-Together these cover the four warning signs that consumer-protection agencies such as the US FTC publish (impersonation, problem or prize, pressure to act, unusual payment), with reward and threat split apart because they call for different explanations, and with isolation added because it is the tactic that most directly removes the user's ability to seek help. The "unusual payment method" sign is not a tactic in the wording of a message and is handled by the safety disclaimer instead.
-
-References: Cialdini, *Influence: The Psychology of Persuasion* (1984); Stajano and Wilson, "Understanding scam victims: seven principles for systems security", *Communications of the ACM* 54(3), 2011; US Federal Trade Commission, "How to avoid a scam".
+What it does **not** do: decide whether a message is fraudulent, check who sent it, follow links, or replace advice from your bank or the police.
 
 ## Quick start
 
 ```bash
 conda activate scamantics          # or: pip install -r requirements.txt
-python app.py                      # http://127.0.0.1:7860
-SCAMANTICS_SHARE=1 python app.py   # also prints a temporary public gradio.live link
+python app.py                      # open http://127.0.0.1:7860
 ```
 
-By default the app talks to a **local Ollama** server (`gemma4:12b`), which is free. Switch provider with environment variables or a `.env` file (see `.env.example`):
-
-| `SCAMANTICS_PROVIDER` | Backend | Needs key | Notes |
-|---|---|---|---|
-| `ollama` (default) | local Ollama `/api/chat` | no | schema-constrained JSON output |
-| `openai` | OpenAI chat completions | `OPENAI_API_KEY` | default model `gpt-4o-mini` |
-| `groq` | Groq (OpenAI-compatible) | `GROQ_API_KEY` | free tier, very fast |
-| `openrouter` | OpenRouter (OpenAI-compatible) | `OPENROUTER_API_KEY` | has `:free` models |
-| `deepseek` | DeepSeek (OpenAI-compatible) | `DEEPSEEK_API_KEY` | cheap |
-| `anthropic` | Anthropic Messages API | `ANTHROPIC_API_KEY` | default `claude-haiku-4-5` |
-| `gemini` | Google Gemini | `GEMINI_API_KEY` | free tier |
-| `mock` | cached demo answers only | no | offline fallback |
-
-Any other OpenAI-compatible server (vLLM, LM Studio, Together…) works with `SCAMANTICS_PROVIDER=openai` plus `SCAMANTICS_BASE_URL` and `SCAMANTICS_MODEL`.
-
-If the backend is unreachable, the app serves precomputed answers from `data/demo_cache.json` for known messages, so the demo still runs offline. Rebuild the cache with `python scripts/build_demo_cache.py` (add `--all` to include the test set).
-
-## Interface
-
-The result panel shows a verdict banner with tactic chips, the original message with every verified evidence span highlighted and tagged, one card per tactic (definition, quoted evidence, plain-language explanation, model confidence), a "what you can do" box built from the tactics found, and the raw JSON. Light and dark themes are supported; the layout stacks on phones.
-
-For styling work, `scripts/ui_preview.py` launches the UI with a pre-rendered example from the demo cache (no model call):
+The default backend is a **local Ollama** server running `gemma4:12b`, which costs nothing. To use a cloud API instead, set two environment variables (or put them in `.env`, see `.env.example`):
 
 ```bash
-SCAMANTICS_PROVIDER=mock python scripts/ui_preview.py 0 7862   # example index, port
+SCAMANTICS_PROVIDER=groq GROQ_API_KEY=... python app.py
+```
+
+Add `SCAMANTICS_SHARE=1` to print a temporary public `gradio.live` link as well. If the model backend is unreachable, the app falls back to precomputed answers for the built-in examples, so the demo still runs offline.
+
+## How it works
+
+```
+message ─► one LLM call: detect + identify + quote + explain  (JSON schema)
+        ─► validator: every quote must appear verbatim in the message
+               └─ rejected quotes ─► one retry asking the model to correct them
+        ─► UI: highlighted evidence · tactic cards · advice · disclaimer
+```
+
+1. **Detect and identify.** A pretrained LLM judges whether manipulation is present and labels the tactics from the fixed list. Detection, classification, evidence and explanation are produced in a single request to keep latency and cost low.
+2. **Ground.** For each tactic the model must quote the exact words that support it.
+3. **Verify.** Python checks that every quote is a verbatim substring of the message. Quotes that are not are rejected and the model is asked once to fix them. A tactic with no surviving evidence is dropped, and a message with no verified evidence is never flagged. Case, whitespace and curly-quote differences are tolerated when *locating* a quote, but the text shown to the user is always the exact source span.
+4. **Explain.** Each verified tactic is displayed with its evidence, a plain-language explanation and the model's self-reported confidence.
+
+No model is trained and no GPU is required; the LLM is a configuration choice.
+
+## The five tactics
+
+| Label | Tactic | What it looks like | Why it is in the taxonomy |
+|---|---|---|---|
+| `urgency` | Urgency | deadlines, countdowns, "act now" | Time pressure stops the reader from verifying. The "pressure you to act immediately" warning sign; scarcity in Cialdini; the *time* principle in Stajano and Wilson. |
+| `impersonation` | Impersonation / authority | "This is your bank", "Hi Mum, new number" | Borrowing a trusted identity is the entry point of most phishing and family-emergency scams. The "pretend to be an organisation you know" sign; the *authority* principle. |
+| `isolation` | Isolation / secrecy | "don't tell the bank", "keep this between us" | Cutting the target off from second opinions is what makes the other tactics hard to break; characteristic of romance, courier and safe-account scams. |
+| `reward` | Reward / incentive | prizes, refunds, jobs, guaranteed returns | Exploits *need and greed*; the "there's a prize" half of the "problem or prize" sign. |
+| `threat` | Threat / penalty | arrest, fines, account closure, exposure | Exploits fear; the "there's a problem" half of "problem or prize" and the coercive counterpart of reward. |
+
+**Why five, and why these?** The taxonomy is small and fixed so that outputs are comparable across messages and models, and so that each label has an operational definition a non-expert can check against the quoted evidence. The five labels cover the warning signs published by consumer-protection agencies such as the US FTC (impersonation, problem or prize, pressure to act, unusual payment). Reward and threat are kept apart because they need different explanations; isolation is added because it is the tactic that most directly removes the user's ability to seek help. The "unusual payment method" sign is about the requested action rather than the wording, so it is handled by the safety disclaimer instead of a label.
+
+Definitions, examples, colours and advice text live in `scamantics/taxonomy.py` and are injected into the system prompt.
+
+References: Cialdini, *Influence: The Psychology of Persuasion* (1984) · Stajano and Wilson, "Understanding scam victims: seven principles for systems security", *Communications of the ACM* 54(3), 2011 · US Federal Trade Commission, "How to avoid a scam".
+
+## Choosing an LLM backend
+
+All backends implement the same two-method interface (`complete_json`, `healthcheck`) in `scamantics/providers/`. Select one with `SCAMANTICS_PROVIDER`:
+
+| Value | Backend | Key | Notes |
+|---|---|---|---|
+| `ollama` (default) | local Ollama `/api/chat` | none | JSON-schema-constrained output, free |
+| `groq` | Groq (OpenAI-compatible) | `GROQ_API_KEY` | free tier, very fast |
+| `gemini` | Google Gemini | `GEMINI_API_KEY` | free tier, schema-constrained |
+| `openrouter` | OpenRouter (OpenAI-compatible) | `OPENROUTER_API_KEY` | has `:free` models |
+| `deepseek` | DeepSeek (OpenAI-compatible) | `DEEPSEEK_API_KEY` | low cost |
+| `openai` | OpenAI chat completions | `OPENAI_API_KEY` | default `gpt-4o-mini` |
+| `anthropic` | Anthropic Messages API | `ANTHROPIC_API_KEY` | default `claude-haiku-4-5` |
+| `mock` | cached demo answers only | none | offline tests and demos |
+
+Override the preset's model or endpoint with `SCAMANTICS_MODEL` and `SCAMANTICS_BASE_URL`; any OpenAI-compatible server (vLLM, LM Studio, Together…) works with `SCAMANTICS_PROVIDER=openai`. Other knobs: `SCAMANTICS_MAX_RETRIES` (default 1), `SCAMANTICS_TEMPERATURE` (default 0), `SCAMANTICS_USE_CACHE` (default on).
+
+**Offline cache.** `data/demo_cache.json` holds precomputed results for every message in the examples and the test set. It is served when the backend is down, and used by the `mock` provider. Rebuild it after changing the prompt or the model:
+
+```bash
+python scripts/build_demo_cache.py --all
 ```
 
 ## Evaluation
 
-`data/test_set.jsonl` holds 90 hand-written, hand-annotated messages with gold tactic labels and gold evidence spans:
+### Test set
 
-| Category | n | What it tests |
+`data/test_set.jsonl` contains 90 hand-written messages, each annotated with gold tactic labels and gold evidence spans.
+
+| Category | n | Purpose |
 |---|---|---|
-| `familiar` | 25 | Classic scam templates (bank lock-out, prize, tax warrant, parcel fee…) |
-| `paraphrased` | 20 | Scams with unseen wording and different scenarios, for generalisation |
-| `subtle_scam` | 15 | Low-key scams with few surface cues: wrong-number openers, slow-burn investment and romance grooming, advance-fee offers phrased politely. Two of these (`ss01`, `ss14`) contain no tactic from the taxonomy and are labelled empty on purpose. |
+| `familiar` | 25 | Classic scam templates: bank lock-out, prize, tax warrant, parcel fee… |
+| `paraphrased` | 20 | Scams with unseen wording and different scenarios, to measure generalisation |
+| `subtle_scam` | 15 | Low-cue scams: wrong-number openers, slow-burn investment and romance grooming, politely worded advance-fee offers. Two (`ss01`, `ss14`) contain no taxonomy tactic in the text and are labelled empty on purpose. |
 | `benign` | 15 | Ordinary personal, commercial and institutional messages |
-| `hard_benign` | 15 | Legitimate messages that *look* like scams: real fraud alerts, OTP warnings, payment reminders with deadlines, a genuine "lost my phone" text, a police case update |
+| `hard_benign` | 15 | Legitimate messages that *look* like scams: real fraud alerts, OTP warnings, payment reminders with deadlines, a genuine "lost my phone" text |
+
+### Metrics
+
+Reported overall and per category by `evaluate.py`:
+
+| Metric | Measures |
+|---|---|
+| Detection accuracy / F1, false-positive rate | whether the message is flagged at all |
+| Macro F1, micro F1, per-label F1 | multi-label tactic classification over the five labels |
+| Grounding rate | share of the model's *raw* quotes that occur exactly in the source, counted before the validator repairs or rejects anything |
+| Span F1 | token-level overlap between predicted and gold evidence spans, per label |
+| Mean attempts | how often the retry was needed |
 
 ```bash
-python evaluate.py                          # current provider, prints the report
+python evaluate.py                                        # current provider
 python evaluate.py --provider groq --out results/groq.json
-python evaluate.py --category hard_benign   # one subset only
+python evaluate.py --category hard_benign                 # one subset only
 ```
 
-Reported per category and overall: detection accuracy, F1 and false-positive rate (is the message flagged at all), macro and micro F1 over the five labels plus per-label F1, **grounding rate** (share of the model's raw quotes that occur exactly in the source, counted before the validator repairs or rejects anything), **span F1** (token-level overlap with gold spans), and mean attempts per message. Results for the local baseline are in `results/`.
-
-### Baseline: local `gemma4:12b` via Ollama (no API cost)
+### Baseline results: `gemma4:12b` via Ollama
 
 | Category | n | Detection acc. | Macro F1 | Micro F1 | Grounding | Span F1 |
 |---|---|---|---|---|---|---|
@@ -110,45 +149,48 @@ Reported per category and overall: detection accuracy, F1 and false-positive rat
 | benign | 15 | 1.000 | – | – | 1.000 | – |
 | hard_benign | 15 | 1.000 | – | – | 1.000 | – |
 
-Per-label F1 overall: urgency 0.958, impersonation 0.904, isolation 0.963, reward 0.955, threat 0.938. Mean attempts 1.01; about 4 s per message on one GPU.
+Per-label F1: urgency 0.958 · impersonation 0.904 · isolation 0.963 · reward 0.955 · threat 0.938. Mean attempts 1.01; about 4 s per message on one GPU.
 
-Reading the numbers: every one of the 30 legitimate messages, including the scam-lookalikes in `hard_benign`, was left unflagged. The weak spot is `subtle_scam`, where the model flags the two deliberately empty-labelled messages (the wrong-number opener as impersonation, the overpaying tenant as reward) and labels the romance groomer as impersonation + reward rather than isolation. Those readings are defensible, which is exactly the kind of annotation disagreement the small benchmark cannot settle. Full per-message predictions are in `results/eval_ollama_gemma4-12b.json`.
+**Reading the numbers.** All 30 legitimate messages, including the scam-lookalikes in `hard_benign`, were left unflagged, and every quote the model produced was verbatim. The weak spot is `subtle_scam`: the model flags the two deliberately empty-labelled messages (wrong-number opener as impersonation, overpaying tenant as reward) and reads the romance groomer as impersonation + reward rather than isolation. Those readings are defensible, which is the kind of annotation disagreement a small benchmark cannot settle. Per-message predictions are in `results/eval_ollama_gemma4-12b.json`.
 
 ## Limitations
 
-- **Small prototype benchmark.** 90 messages written by the project team is enough to compare configurations and catch regressions, not to make claims about real-world performance. Messages are English, UK/US-centric, and short. There is no inter-annotator agreement study; the gold labels reflect the team's reading of each message.
-- **The taxonomy is not exhaustive.** Flattery, reciprocity, social proof ("thousands have already claimed"), and pure deception without pressure are not labels. Some scams, such as the wrong-number opener or the overpaying tenant, contain no tactic in the message text and will correctly produce "no strong tactic detected" even though the follow-up conversation would be a scam.
-- **Tactics are not verdicts.** Legitimate fraud alerts, OTP messages and payment reminders share wording with scams. Scamantics only looks at wording; it knows nothing about the sender, the link destination or the recipient's actual account. That is why the interface never says "scam" and always points the user to an independent channel.
-- **LLM dependence.** Labels, explanations and confidence scores come from a general-purpose model and vary between models and runs. The validator guarantees that quoted evidence is real; it does not guarantee that the label attached to it is right or that the explanation is accurate.
-- **Confidence scores are self-reported** by the model and are not calibrated probabilities.
-- **No image or OCR input** in this version.
+- **Small prototype benchmark.** 90 messages written by the project team are enough to compare configurations and catch regressions, not to make claims about real-world performance. Messages are English, UK/US-centric and short. There is no inter-annotator agreement study; gold labels reflect the team's reading.
+- **The taxonomy is not exhaustive.** Flattery, reciprocity, social proof and deception without pressure have no label. Some scams, such as the wrong-number opener, contain no tactic in the message text and will correctly produce "no strong tactic detected" even though the follow-up conversation would be a scam.
+- **Tactics are not verdicts.** Legitimate fraud alerts, OTP messages and payment reminders share wording with scams. Scamantics only sees wording; it knows nothing about the sender, the link destination or the recipient's real account.
+- **LLM dependence.** Labels, explanations and confidence scores come from a general-purpose model and vary between models and runs. The validator guarantees that quoted evidence is real; it does not guarantee that the label or explanation is right.
+- **Confidence is self-reported** by the model and not a calibrated probability.
+- **Text only.** No image or OCR input in this version.
 
 ## Project layout
 
 ```
-app.py                      Gradio interface
-evaluate.py                 evaluation CLI
+app.py                       Gradio interface
+evaluate.py                  evaluation CLI
 scamantics/
-  taxonomy.py               the five tactics, definitions, examples, colours, advice
-  schema.py                 Pydantic models + JSON schema sent to the model
-  prompt.py                 system / user / retry prompts
-  validator.py              exact-substring evidence check (lenient locate, strict output)
-  analyzer.py               orchestration: call → parse → validate → retry → result
-  cache.py                  offline demo cache
-  config.py                 env-based settings and provider presets
-  evaluation.py             metrics (sklearn)
-  providers/                ollama, openai-compatible, anthropic, gemini, mock
-data/test_set.jsonl         labelled test set (90 messages, 5 categories)
-data/demo_cache.json        cached results for all known messages
-docs/screenshots/           README screenshots
-scripts/build_demo_cache.py
-scripts/ui_preview.py       launch the UI with a pre-rendered example (for screenshots)
-tests/                      pytest suite (no network required)
-results/                    evaluation reports
+  taxonomy.py                the five tactics: definitions, examples, colours, advice
+  schema.py                  Pydantic models and the JSON schema sent to the model
+  prompt.py                  system, user and retry prompts
+  validator.py               exact-substring evidence check
+  analyzer.py                call → parse → validate → retry → result
+  providers/                 ollama, openai-compatible, anthropic, gemini, mock
+  config.py                  settings and provider presets
+  cache.py                   offline demo cache
+  evaluation.py              metrics (scikit-learn)
+data/test_set.jsonl          90 annotated messages in 5 categories
+data/demo_cache.json         cached results for all known messages
+results/                     evaluation reports
+docs/screenshots/            README screenshots
+scripts/build_demo_cache.py  precompute results for the cache
+scripts/ui_preview.py        launch the UI with a pre-rendered example
+tests/                       pytest suite, no network required
 ```
 
-## Tests
+## Development
 
 ```bash
-python -m pytest -q
+python -m pytest -q                                             # 38 tests, offline
+SCAMANTICS_PROVIDER=mock python scripts/ui_preview.py 0 7862    # UI with example 0 pre-rendered, for styling and screenshots
 ```
+
+The Gradio app also exposes its analysis as an API endpoint (`/analyse`), callable with `gradio_client`: input one message string, output the rendered HTML and the full result JSON.
