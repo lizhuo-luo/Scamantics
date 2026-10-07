@@ -61,7 +61,8 @@ def main(argv: list[str] | None = None) -> int:
     report = evaluate(examples, results)
     print()
     print(format_report(report))
-    print(f"\nmodel: {settings.describe}   total time: {total:.1f}s   avg: {total / max(1, len(examples)):.1f}s/msg")
+    model_name = f"{settings.preset}:{analyzer.provider.model}"
+    print(f"\nmodel: {model_name}   total time: {total:.1f}s   avg: {total / max(1, len(examples)):.1f}s/msg")
 
     if args.out:
         out = Path(args.out)
@@ -69,7 +70,7 @@ def main(argv: list[str] | None = None) -> int:
         out.write_text(
             json.dumps(
                 {
-                    "model": settings.describe,
+                    "model": model_name,
                     "metrics": report,
                     "predictions": [
                         {"id": e.id, "category": e.category, "gold": e.labels, "gold_evidence": e.evidence, "result": r.model_dump()}

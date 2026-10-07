@@ -2,7 +2,9 @@
 
 Provider selection (SCAMANTICS_PROVIDER):
   ollama      - local Ollama server, free (default if reachable)
-  openai      - OpenAI-compatible chat completions; also Groq, OpenRouter, DeepSeek, Together, vLLM
+  sglang      - local SGLang server (OpenAI-compatible, JSON-schema constrained output)
+  vllm        - local vLLM server (OpenAI-compatible)
+  openai      - OpenAI-compatible chat completions; also Groq, OpenRouter, DeepSeek, Together
                 via SCAMANTICS_BASE_URL
   anthropic   - Anthropic Messages API
   gemini      - Google Gemini generateContent API (free tier available)
@@ -24,6 +26,9 @@ except Exception:  # pragma: no cover
 PRESETS: dict[str, dict[str, str]] = {
     # name: {provider, base_url, model, key_env}
     "ollama": {"provider": "ollama", "base_url": "http://localhost:11434", "model": "gemma4:12b", "key_env": ""},
+    # Local OpenAI-compatible servers. Leave model empty to use whatever model the server is serving.
+    "sglang": {"provider": "openai", "base_url": "http://localhost:30000/v1", "model": "", "key_env": ""},
+    "vllm": {"provider": "openai", "base_url": "http://localhost:8000/v1", "model": "", "key_env": ""},
     "openai": {"provider": "openai", "base_url": "https://api.openai.com/v1", "model": "gpt-4o-mini", "key_env": "OPENAI_API_KEY"},
     "groq": {"provider": "openai", "base_url": "https://api.groq.com/openai/v1", "model": "llama-3.3-70b-versatile", "key_env": "GROQ_API_KEY"},
     "openrouter": {"provider": "openai", "base_url": "https://openrouter.ai/api/v1", "model": "meta-llama/llama-3.3-70b-instruct:free", "key_env": "OPENROUTER_API_KEY"},

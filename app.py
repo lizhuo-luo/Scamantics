@@ -337,7 +337,7 @@ def build_app(initial_message: str | None = None) -> gr.Blocks:
     """Build the UI. `initial_message` pre-fills and pre-renders a result (used for previews)."""
     analyzer = get_analyzer()
     ok, _status = analyzer.provider.healthcheck()
-    status = f"{analyzer.settings.provider} · {analyzer.settings.model}" if ok else "model offline · cached demos only"
+    status = f"{analyzer.settings.preset} · {analyzer.provider.model}" if ok else "model offline · cached demos only"
     init_html, init_raw, init_text = EMPTY_STATE, None, ""
     if initial_message:
         init_text = initial_message

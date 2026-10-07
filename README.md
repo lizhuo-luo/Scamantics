@@ -43,10 +43,11 @@ conda activate scamantics          # or: pip install -r requirements.txt
 python app.py                      # open http://127.0.0.1:7860
 ```
 
-The default backend is a **local Ollama** server running `gemma4:12b`, which costs nothing. To use a cloud API instead, set two environment variables (or put them in `.env`, see `.env.example`):
+The default backend is a **local Ollama** server running `gemma4:12b`, which costs nothing. Two other local options, SGLang and vLLM, and several cloud APIs are one environment variable away (or put it in `.env`, see `.env.example`):
 
 ```bash
-SCAMANTICS_PROVIDER=groq GROQ_API_KEY=... python app.py
+SCAMANTICS_PROVIDER=sglang python app.py                 # local SGLang server on :30000
+SCAMANTICS_PROVIDER=groq GROQ_API_KEY=... python app.py  # cloud API
 ```
 
 Add `SCAMANTICS_SHARE=1` to print a temporary public `gradio.live` link as well. If the model backend is unreachable, the app falls back to precomputed answers for the built-in examples, so the demo still runs offline.
@@ -89,7 +90,9 @@ All backends implement the same two-method interface (`complete_json`, `healthch
 
 | Value | Backend | Key | Notes |
 |---|---|---|---|
-| `ollama` (default) | local Ollama `/api/chat` | none | JSON-schema-constrained output, free |
+| `ollama` (default) | local Ollama `/api/chat` | none | GGUF models, JSON-schema-constrained output, one command to run |
+| `sglang` | local SGLang server, OpenAI-compatible | none | HF weights, JSON-schema-constrained output, high throughput |
+| `vllm` | local vLLM server, OpenAI-compatible | none | HF weights, JSON-schema-constrained output, high throughput |
 | `groq` | Groq (OpenAI-compatible) | `GROQ_API_KEY` | free tier, very fast |
 | `gemini` | Google Gemini | `GEMINI_API_KEY` | free tier, schema-constrained |
 | `openrouter` | OpenRouter (OpenAI-compatible) | `OPENROUTER_API_KEY` | has `:free` models |
@@ -99,6 +102,21 @@ All backends implement the same two-method interface (`complete_json`, `healthch
 | `mock` | cached demo answers only | none | offline tests and demos |
 
 Override the preset's model or endpoint with `SCAMANTICS_MODEL` and `SCAMANTICS_BASE_URL`; any OpenAI-compatible server (vLLM, LM Studio, Together…) works with `SCAMANTICS_PROVIDER=openai`. Other knobs: `SCAMANTICS_MAX_RETRIES` (default 1), `SCAMANTICS_TEMPERATURE` (default 0), `SCAMANTICS_USE_CACHE` (default on).
+
+**Ollama vs SGLang/vLLM.** Ollama runs quantised GGUF models and is the easiest to set up. SGLang and vLLM serve original HuggingFace weights with continuous batching, so they are the better choice for GPU machines and for running the evaluation quickly. All three support schema-constrained JSON, which is what keeps labels and fields well-formed. For local OpenAI-compatible servers the provider asks `GET /v1/models` for the served model when `SCAMANTICS_MODEL` is empty, and requests structured output in the strongest form the server accepts (`json_schema`, then `json_object`, then none).
+
+Running SGLang in its own environment:
+
+```bash
+conda create -n sglang python=3.12 && conda activate sglang
+pip install "sglang[all]"
+python -m sglang.launch_server --model-path Qwen/Qwen2.5-7B-Instruct --port 30000
+# then, in the scamantics env:
+SCAMANTICS_PROVIDER=sglang python app.py
+SCAMANTICS_PROVIDER=sglang python evaluate.py --no-cache --out results/eval_sglang_qwen2.5-7b.json
+```
+
+vLLM is the same with `python -m vllm.entrypoints.openai.api_server --model <model> --port 8000` and `SCAMANTICS_PROVIDER=vllm`.
 
 **Offline cache.** `data/demo_cache.json` holds precomputed results for every message in the examples and the test set. It is served when the backend is down, and used by the `mock` provider. Rebuild it after changing the prompt or the model:
 
@@ -173,7 +191,7 @@ scamantics/
   prompt.py                  system, user and retry prompts
   validator.py               exact-substring evidence check
   analyzer.py                call → parse → validate → retry → result
-  providers/                 ollama, openai-compatible, anthropic, gemini, mock
+  providers/                 ollama, openai-compatible (sglang, vllm, cloud APIs), anthropic, gemini, mock
   config.py                  settings and provider presets
   cache.py                   offline demo cache
   evaluation.py              metrics (scikit-learn)
@@ -189,7 +207,7 @@ tests/                       pytest suite, no network required
 ## Development
 
 ```bash
-python -m pytest -q                                             # 38 tests, offline
+python -m pytest -q                                             # 45 tests, offline
 SCAMANTICS_PROVIDER=mock python scripts/ui_preview.py 0 7862    # UI with example 0 pre-rendered, for styling and screenshots
 ```
 
