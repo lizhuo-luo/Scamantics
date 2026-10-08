@@ -1,5 +1,5 @@
-from scamantics.schema import LLMAnalysis
-from scamantics.validator import grounding_rate, locate, validate
+from scamantiq.schema import LLMAnalysis
+from scamantiq.validator import grounding_rate, locate, validate
 
 MSG = 'URGENT: Your account will be suspended in 24 hours. Click here now: http://bit.ly/x — "Bank of America" Security Team. Do not tell anyone.'
 

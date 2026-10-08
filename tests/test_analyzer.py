@@ -1,8 +1,8 @@
 import json
 
-from scamantics.analyzer import Analyzer
-from scamantics.cache import DemoCache
-from scamantics.providers.mock import MockProvider
+from scamantiq.analyzer import Analyzer
+from scamantiq.cache import DemoCache
+from scamantiq.providers.mock import MockProvider
 
 MSG = "Dear customer, your parcel is held at customs. Pay the $2.99 fee within 12 hours or it will be returned."
 

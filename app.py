@@ -1,4 +1,4 @@
-"""Scamantics Gradio demo: paste a message, see which manipulation tactics it uses and why."""
+"""ScamantiQ Gradio demo: paste a message, see which manipulation tactics it uses and why."""
 
 from __future__ import annotations
 
@@ -9,14 +9,14 @@ import time
 
 import gradio as gr
 
-from scamantics.analyzer import Analyzer
-from scamantics.schema import AnalysisResult
-from scamantics.taxonomy import TACTIC_BY_LABEL, TACTICS
+from scamantiq.analyzer import Analyzer
+from scamantiq.schema import AnalysisResult
+from scamantiq.taxonomy import TACTIC_BY_LABEL, TACTICS
 
-logging.basicConfig(level=os.getenv("SCAMANTICS_LOG", "INFO"))
+logging.basicConfig(level=os.getenv("SCAMANTIQ_LOG", "INFO"))
 
 DISCLAIMER = (
-    "Scamantics is an educational tool. It highlights persuasive or coercive patterns so you can judge for "
+    "ScamantiQ is an educational tool. It highlights persuasive or coercive patterns so you can judge for "
     "yourself; it cannot confirm whether a message is genuinely fraudulent. If a message asks for money, codes "
     "or personal details, verify the request through an independent channel such as the phone number on your "
     "bank card or the organisation's official website."
@@ -189,7 +189,7 @@ def render_result(result: AnalysisResult, seconds: float | None = None) -> str:
 EMPTY_STATE = (
     "<div class='sc-empty'><div class='sc-empty-icon'>🛡️</div>"
     "<div class='sc-empty-title'>Paste a message to begin</div>"
-    "<div class='sc-empty-text'>Scamantics will highlight the phrases that pressure or persuade you, name the tactic behind each one, "
+    "<div class='sc-empty-text'>ScamantiQ will highlight the phrases that pressure or persuade you, name the tactic behind each one, "
     "and explain it in plain language.</div></div>"
 )
 
@@ -206,7 +206,7 @@ def header_html(status: str, ok: bool) -> str:
     dot = "sc-status-ok" if ok else "sc-status-bad"
     return (
         "<div class='sc-header'><div class='sc-brand'>"
-        "<div class='sc-logo'>S</div><div><div class='sc-title'>Scamantics</div>"
+        "<div class='sc-logo'>S</div><div><div class='sc-title'>ScamantiQ</div>"
         "<div class='sc-tagline'>Explains how a message tries to manipulate you. Not a scam detector.</div></div></div>"
         f"<div class='sc-status'><span class='sc-status-dot {dot}'></span>{_esc(status)}</div></div>"
     )
@@ -343,7 +343,7 @@ def build_app(initial_message: str | None = None) -> gr.Blocks:
         init_text = initial_message
         init_html, init_raw = analyse(initial_message)
 
-    with gr.Blocks(title="Scamantics") as demo:
+    with gr.Blocks(title="ScamantiQ") as demo:
         gr.HTML(header_html(status, ok))
         with gr.Row(equal_height=False):
             with gr.Column(scale=5, min_width=340):
@@ -368,7 +368,7 @@ def build_app(initial_message: str | None = None) -> gr.Blocks:
                     examples_per_page=8,
                 )
                 gr.HTML(legend_html())
-                with gr.Accordion("How Scamantics works", open=False):
+                with gr.Accordion("How ScamantiQ works", open=False):
                     gr.HTML(how_it_works_html())
             with gr.Column(scale=7, min_width=380):
                 result_html = gr.HTML(init_html, elem_id="sc-result")
@@ -384,19 +384,19 @@ def build_app(initial_message: str | None = None) -> gr.Blocks:
 
 if __name__ == "__main__":
     ok, status = get_analyzer().provider.healthcheck()
-    print(f"[scamantics] provider status: {status}")
+    print(f"[scamantiq] provider status: {status}")
     if not ok:
-        print("[scamantics] WARNING: provider unavailable; only cached demo examples will work.")
+        print("[scamantiq] WARNING: provider unavailable; only cached demo examples will work.")
     _app, local_url, share_url = build_app().launch(
         css=CSS,
         theme=gr.themes.Soft(primary_hue="indigo", neutral_hue="slate", radius_size="lg"),
-        server_name=os.getenv("SCAMANTICS_HOST", "127.0.0.1"),
-        server_port=int(os.getenv("SCAMANTICS_PORT", "7860")),
-        share=os.getenv("SCAMANTICS_SHARE", "0") == "1",
+        server_name=os.getenv("SCAMANTIQ_HOST", "127.0.0.1"),
+        server_port=int(os.getenv("SCAMANTIQ_PORT", "7860")),
+        share=os.getenv("SCAMANTIQ_SHARE", "0") == "1",
         prevent_thread_lock=True,
     )
-    print(f"[scamantics] local URL:  {local_url}", flush=True)
-    print(f"[scamantics] public URL: {share_url or '(share disabled or tunnel failed)'}", flush=True)
+    print(f"[scamantiq] local URL:  {local_url}", flush=True)
+    print(f"[scamantiq] public URL: {share_url or '(share disabled or tunnel failed)'}", flush=True)
     try:
         while True:
             time.sleep(3600)

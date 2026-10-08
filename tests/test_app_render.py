@@ -1,7 +1,7 @@
 """Rendering helpers in app.py must escape input and reflect the result faithfully."""
 
 import app
-from scamantics.schema import AnalysisResult, EvidenceSpan, VerifiedTactic
+from scamantiq.schema import AnalysisResult, EvidenceSpan, VerifiedTactic
 
 MSG = "URGENT <b>act now</b> or your account will be closed. Don't tell anyone."
 
@@ -52,7 +52,7 @@ def test_examples_and_labels_align():
 
 
 def test_build_app_with_initial_message(monkeypatch):
-    monkeypatch.setenv("SCAMANTICS_PROVIDER", "mock")
+    monkeypatch.setenv("SCAMANTIQ_PROVIDER", "mock")
     app._analyzer = None
     demo = app.build_app(initial_message=app.EXAMPLES[0])
     assert demo is not None

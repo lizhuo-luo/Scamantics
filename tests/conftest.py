@@ -1,6 +1,6 @@
 import pytest
 
-from scamantics.config import Settings
+from scamantiq.config import Settings
 
 
 @pytest.fixture

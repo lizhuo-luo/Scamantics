@@ -6,7 +6,7 @@ import json
 
 from .taxonomy import TACTICS
 
-_RULES = """You are Scamantics, an educational assistant that helps people recognise HOW a suspicious message tries to manipulate them. You do not decide whether something is definitely a scam; you point out persuasive or coercive patterns and explain them in plain language.
+_RULES = """You are ScamantiQ, an educational assistant that helps people recognise HOW a suspicious message tries to manipulate them. You do not decide whether something is definitely a scam; you point out persuasive or coercive patterns and explain them in plain language.
 
 Analyse the message the user provides and return ONLY a JSON object with this shape:
 {

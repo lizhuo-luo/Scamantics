@@ -1,11 +1,11 @@
 """Runtime configuration from environment variables (optionally loaded from a .env file).
 
-Provider selection (SCAMANTICS_PROVIDER):
+Provider selection (SCAMANTIQ_PROVIDER):
   ollama      - local Ollama server, free (default if reachable)
   sglang      - local SGLang server (OpenAI-compatible, JSON-schema constrained output)
   vllm        - local vLLM server (OpenAI-compatible)
   openai      - OpenAI-compatible chat completions; also Groq, OpenRouter, DeepSeek, Together
-                via SCAMANTICS_BASE_URL
+                via SCAMANTIQ_BASE_URL
   anthropic   - Anthropic Messages API
   gemini      - Google Gemini generateContent API (free tier available)
   mock        - cached demonstration answers only, no network
@@ -58,23 +58,23 @@ class Settings:
 
 
 def load_settings(**overrides) -> Settings:
-    preset_name = overrides.pop("preset", None) or os.getenv("SCAMANTICS_PROVIDER", "ollama").lower()
+    preset_name = overrides.pop("preset", None) or os.getenv("SCAMANTIQ_PROVIDER", "ollama").lower()
     preset = PRESETS.get(preset_name)
     if preset is None:
         # unknown name: treat it as a raw provider type
         preset = {"provider": preset_name, "base_url": "", "model": "", "key_env": ""}
-    api_key = os.getenv("SCAMANTICS_API_KEY") or (os.getenv(preset["key_env"]) if preset["key_env"] else "") or ""
+    api_key = os.getenv("SCAMANTIQ_API_KEY") or (os.getenv(preset["key_env"]) if preset["key_env"] else "") or ""
     s = Settings(
         preset=preset_name,
         provider=preset["provider"],
-        base_url=os.getenv("SCAMANTICS_BASE_URL", preset["base_url"]),
-        model=os.getenv("SCAMANTICS_MODEL", preset["model"]),
+        base_url=os.getenv("SCAMANTIQ_BASE_URL", preset["base_url"]),
+        model=os.getenv("SCAMANTIQ_MODEL", preset["model"]),
         api_key=api_key,
-        timeout=float(os.getenv("SCAMANTICS_TIMEOUT", "120")),
-        max_retries=int(os.getenv("SCAMANTICS_MAX_RETRIES", "1")),
-        temperature=float(os.getenv("SCAMANTICS_TEMPERATURE", "0")),
-        cache_path=os.getenv("SCAMANTICS_CACHE", "data/demo_cache.json"),
-        use_cache=os.getenv("SCAMANTICS_USE_CACHE", "1") not in ("0", "false", "False"),
+        timeout=float(os.getenv("SCAMANTIQ_TIMEOUT", "120")),
+        max_retries=int(os.getenv("SCAMANTIQ_MAX_RETRIES", "1")),
+        temperature=float(os.getenv("SCAMANTIQ_TEMPERATURE", "0")),
+        cache_path=os.getenv("SCAMANTIQ_CACHE", "data/demo_cache.json"),
+        use_cache=os.getenv("SCAMANTIQ_USE_CACHE", "1") not in ("0", "false", "False"),
     )
     for k, v in overrides.items():
         if v is not None:

@@ -1,9 +1,9 @@
 import pytest
 
-from scamantics.analyzer import parse_llm_output
-from scamantics.providers.base import ProviderError, extract_json_object
-from scamantics.schema import TacticRecord
-from scamantics.taxonomy import LABELS, normalise_label
+from scamantiq.analyzer import parse_llm_output
+from scamantiq.providers.base import ProviderError, extract_json_object
+from scamantiq.schema import TacticRecord
+from scamantiq.taxonomy import LABELS, normalise_label
 
 
 def test_taxonomy_has_five_labels():

@@ -61,20 +61,20 @@ class OpenAICompatProvider(LLMProvider):
     def _headers(self) -> dict[str, str]:
         headers = {"Authorization": f"Bearer {self.settings.api_key or 'none'}", "Content-Type": "application/json"}
         if "openrouter.ai" in self.settings.base_url:
-            headers["HTTP-Referer"] = "https://github.com/scamantics"
-            headers["X-Title"] = "Scamantics"
+            headers["HTTP-Referer"] = "https://github.com/scamantiq"
+            headers["X-Title"] = "ScamantiQ"
         return headers
 
     def _response_format(self, mode: str, schema: dict | None) -> dict | None:
         if mode == "schema" and schema:
-            return {"type": "json_schema", "json_schema": {"name": "scamantics_analysis", "schema": schema}}
+            return {"type": "json_schema", "json_schema": {"name": "scamantiq_analysis", "schema": schema}}
         if mode in ("schema", "object"):
             return {"type": "json_object"}
         return None
 
     def complete_json(self, system: str, user: str, schema: dict | None = None) -> str:
         if not self.settings.api_key and not _is_local(self.settings.base_url):
-            raise ProviderError("no API key configured (set SCAMANTICS_API_KEY or the provider's *_API_KEY)")
+            raise ProviderError("no API key configured (set SCAMANTIQ_API_KEY or the provider's *_API_KEY)")
         model = self._resolve_model()
         url = self.settings.base_url.rstrip("/") + "/chat/completions"
         base_payload = {

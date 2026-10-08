@@ -1,4 +1,4 @@
-from scamantics.evaluation import (
+from scamantiq.evaluation import (
     check_dataset,
     classification_metrics,
     detection_metrics,
@@ -7,7 +7,7 @@ from scamantics.evaluation import (
     load_dataset,
     span_f1,
 )
-from scamantics.schema import AnalysisResult, VerifiedTactic
+from scamantiq.schema import AnalysisResult, VerifiedTactic
 
 
 def test_dataset_integrity():

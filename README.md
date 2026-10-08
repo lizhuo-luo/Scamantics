@@ -1,16 +1,16 @@
-# Scamantics
+# ScamantiQ
 
 **Explainable analysis of how a message tries to manipulate you.**
-Paste a suspicious text and Scamantics names the manipulation tactics it uses, quotes the exact phrases as evidence, and explains each one in plain language.
+Paste a suspicious text and ScamantiQ names the manipulation tactics it uses, quotes the exact phrases as evidence, and explains each one in plain language.
 
-> Scamantics is an educational aid, **not a scam detector**. It never says "this is a scam". A message can use pressure tactics and still be legitimate, and a scam can be written without any of them. The user makes the call; Scamantics shows them what to look at.
+> ScamantiQ is an educational aid, **not a scam detector**. It never says "this is a scam". A message can use pressure tactics and still be legitimate, and a scam can be written without any of them. The user makes the call; ScamantiQ shows them what to look at.
 
-![Scamantics analysing a fake bank alert](docs/screenshots/result-light.png)
+![ScamantiQ analysing a fake bank alert](docs/screenshots/result-light.png)
 
 <details>
 <summary>Dark theme</summary>
 
-![Scamantics in dark mode](docs/screenshots/result-dark.png)
+![ScamantiQ in dark mode](docs/screenshots/result-dark.png)
 </details>
 
 ## Contents
@@ -41,18 +41,18 @@ What it does **not** do: decide whether a message is fraudulent, check who sent 
 ## Quick start
 
 ```bash
-conda activate scamantics          # or: pip install -r requirements.txt
+conda activate scamantiq          # or: pip install -r requirements.txt
 python app.py                      # open http://127.0.0.1:7860
 ```
 
 The default backend is a **local Ollama** server running `gemma4:12b`, which costs nothing. Two other local options, SGLang and vLLM, and several cloud APIs are one environment variable away (or put it in `.env`, see `.env.example`):
 
 ```bash
-SCAMANTICS_PROVIDER=sglang python app.py                 # local SGLang server on :30000
-SCAMANTICS_PROVIDER=groq GROQ_API_KEY=... python app.py  # cloud API
+SCAMANTIQ_PROVIDER=sglang python app.py                 # local SGLang server on :30000
+SCAMANTIQ_PROVIDER=groq GROQ_API_KEY=... python app.py  # cloud API
 ```
 
-Add `SCAMANTICS_SHARE=1` to print a temporary public `gradio.live` link as well. If the model backend is unreachable, the app falls back to precomputed answers for the built-in examples, so the demo still runs offline.
+Add `SCAMANTIQ_SHARE=1` to print a temporary public `gradio.live` link as well. If the model backend is unreachable, the app falls back to precomputed answers for the built-in examples, so the demo still runs offline.
 
 ## How it works
 
@@ -82,13 +82,13 @@ No model is trained and no GPU is required; the LLM is a configuration choice.
 
 **Why five, and why these?** The taxonomy is small and fixed so that outputs are comparable across messages and models, and so that each label has an operational definition a non-expert can check against the quoted evidence. The five labels cover the warning signs published by consumer-protection agencies such as the US FTC (impersonation, problem or prize, pressure to act, unusual payment). Reward and threat are kept apart because they need different explanations; isolation is added because it is the tactic that most directly removes the user's ability to seek help. The "unusual payment method" sign is about the requested action rather than the wording, so it is handled by the safety disclaimer instead of a label.
 
-Definitions, examples, colours and advice text live in `scamantics/taxonomy.py` and are injected into the system prompt.
+Definitions, examples, colours and advice text live in `scamantiq/taxonomy.py` and are injected into the system prompt.
 
 References: Cialdini, *Influence: The Psychology of Persuasion* (1984) · Stajano and Wilson, "Understanding scam victims: seven principles for systems security", *Communications of the ACM* 54(3), 2011 · US Federal Trade Commission, "How to avoid a scam".
 
 ## Choosing an LLM backend
 
-All backends implement the same two-method interface (`complete_json`, `healthcheck`) in `scamantics/providers/`. Select one with `SCAMANTICS_PROVIDER`:
+All backends implement the same two-method interface (`complete_json`, `healthcheck`) in `scamantiq/providers/`. Select one with `SCAMANTIQ_PROVIDER`:
 
 | Value | Backend | Key | Notes |
 |---|---|---|---|
@@ -103,9 +103,9 @@ All backends implement the same two-method interface (`complete_json`, `healthch
 | `anthropic` | Anthropic Messages API | `ANTHROPIC_API_KEY` | default `claude-haiku-4-5` |
 | `mock` | cached demo answers only | none | offline tests and demos |
 
-Override the preset's model or endpoint with `SCAMANTICS_MODEL` and `SCAMANTICS_BASE_URL`; any OpenAI-compatible server (vLLM, LM Studio, Together…) works with `SCAMANTICS_PROVIDER=openai`. Other knobs: `SCAMANTICS_MAX_RETRIES` (default 1), `SCAMANTICS_TEMPERATURE` (default 0), `SCAMANTICS_USE_CACHE` (default on).
+Override the preset's model or endpoint with `SCAMANTIQ_MODEL` and `SCAMANTIQ_BASE_URL`; any OpenAI-compatible server (vLLM, LM Studio, Together…) works with `SCAMANTIQ_PROVIDER=openai`. Other knobs: `SCAMANTIQ_MAX_RETRIES` (default 1), `SCAMANTIQ_TEMPERATURE` (default 0), `SCAMANTIQ_USE_CACHE` (default on).
 
-**Ollama vs SGLang/vLLM.** Ollama runs quantised GGUF models and is the easiest to set up. SGLang and vLLM serve original HuggingFace weights with continuous batching, so they are the better choice for GPU machines and for running the evaluation quickly. All three support schema-constrained JSON, which is what keeps labels and fields well-formed. For local OpenAI-compatible servers the provider asks `GET /v1/models` for the served model when `SCAMANTICS_MODEL` is empty, and requests structured output in the strongest form the server accepts (`json_schema`, then `json_object`, then none).
+**Ollama vs SGLang/vLLM.** Ollama runs quantised GGUF models and is the easiest to set up. SGLang and vLLM serve original HuggingFace weights with continuous batching, so they are the better choice for GPU machines and for running the evaluation quickly. All three support schema-constrained JSON, which is what keeps labels and fields well-formed. For local OpenAI-compatible servers the provider asks `GET /v1/models` for the served model when `SCAMANTIQ_MODEL` is empty, and requests structured output in the strongest form the server accepts (`json_schema`, then `json_object`, then none).
 
 Running SGLang in its own environment:
 
@@ -113,9 +113,9 @@ Running SGLang in its own environment:
 conda create -n sglang python=3.12 && conda activate sglang
 pip install "sglang[all]"
 python -m sglang.launch_server --model-path Qwen/Qwen2.5-7B-Instruct --port 30000
-# then, in the scamantics env:
-SCAMANTICS_PROVIDER=sglang python app.py
-SCAMANTICS_PROVIDER=sglang python evaluate.py --no-cache --out results/eval_sglang_qwen2.5-7b.json
+# then, in the scamantiq env:
+SCAMANTIQ_PROVIDER=sglang python app.py
+SCAMANTIQ_PROVIDER=sglang python evaluate.py --no-cache --out results/eval_sglang_qwen2.5-7b.json
 ```
 
 SGLang compiles some kernels at start-up and needs a CUDA toolkit of 12.9 or newer on `PATH`. If the system `nvcc` is older (symptoms: `NVCC version must be at least 12.9` or `Value 'c++20' is not defined for option 'std'`), install one into the SGLang environment and disable the FP8 DeepGEMM path, which bf16 models do not use anyway:
@@ -126,7 +126,7 @@ export CUDA_HOME=$CONDA_PREFIX PATH=$CONDA_PREFIX/bin:$PATH
 SGLANG_ENABLE_JIT_DEEPGEMM=false python -m sglang.launch_server --model-path Qwen/Qwen2.5-7B-Instruct --port 30000
 ```
 
-vLLM is the same with `python -m vllm.entrypoints.openai.api_server --model <model> --port 8000` and `SCAMANTICS_PROVIDER=vllm`.
+vLLM is the same with `python -m vllm.entrypoints.openai.api_server --model <model> --port 8000` and `SCAMANTIQ_PROVIDER=vllm`.
 
 **Offline cache.** `data/demo_cache.json` holds precomputed results for every message in the examples and the test set. It is served when the backend is down, and used by the `mock` provider. Rebuild it after changing the prompt or the model:
 
@@ -196,7 +196,7 @@ The 7B model is eight times faster but misses many tactics (per-label F1 for imp
 
 - **Small prototype benchmark.** 90 messages written by the project team are enough to compare configurations and catch regressions, not to make claims about real-world performance. Messages are English, UK/US-centric and short. There is no inter-annotator agreement study; gold labels reflect the team's reading.
 - **The taxonomy is not exhaustive.** Flattery, reciprocity, social proof and deception without pressure have no label. Some scams, such as the wrong-number opener, contain no tactic in the message text and will correctly produce "no strong tactic detected" even though the follow-up conversation would be a scam.
-- **Tactics are not verdicts.** Legitimate fraud alerts, OTP messages and payment reminders share wording with scams. Scamantics only sees wording; it knows nothing about the sender, the link destination or the recipient's real account.
+- **Tactics are not verdicts.** Legitimate fraud alerts, OTP messages and payment reminders share wording with scams. ScamantiQ only sees wording; it knows nothing about the sender, the link destination or the recipient's real account.
 - **LLM dependence.** Labels, explanations and confidence scores come from a general-purpose model and vary between models and runs. The validator guarantees that quoted evidence is real; it does not guarantee that the label or explanation is right.
 - **Confidence is self-reported** by the model and not a calibrated probability.
 - **Text only.** No image or OCR input in this version.
@@ -206,7 +206,7 @@ The 7B model is eight times faster but misses many tactics (per-label F1 for imp
 ```
 app.py                       Gradio interface
 evaluate.py                  evaluation CLI
-scamantics/
+scamantiq/
   taxonomy.py                the five tactics: definitions, examples, colours, advice
   schema.py                  Pydantic models and the JSON schema sent to the model
   prompt.py                  system, user and retry prompts
@@ -229,7 +229,7 @@ tests/                       pytest suite, no network required
 
 ```bash
 python -m pytest -q                                             # 45 tests, offline
-SCAMANTICS_PROVIDER=mock python scripts/ui_preview.py 0 7862    # UI with example 0 pre-rendered, for styling and screenshots
+SCAMANTIQ_PROVIDER=mock python scripts/ui_preview.py 0 7862    # UI with example 0 pre-rendered, for styling and screenshots
 ```
 
 The Gradio app also exposes its analysis as an API endpoint (`/analyse`), callable with `gradio_client`: input one message string, output the rendered HTML and the full result JSON.

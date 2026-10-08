@@ -13,10 +13,10 @@ from pathlib import Path
 sys.path.insert(0, str(Path(__file__).resolve().parents[1]))
 
 from app import EXAMPLES  # noqa: E402
-from scamantics.analyzer import Analyzer  # noqa: E402
-from scamantics.cache import DemoCache  # noqa: E402
-from scamantics.config import load_settings  # noqa: E402
-from scamantics.evaluation import load_dataset  # noqa: E402
+from scamantiq.analyzer import Analyzer  # noqa: E402
+from scamantiq.cache import DemoCache  # noqa: E402
+from scamantiq.config import load_settings  # noqa: E402
+from scamantiq.evaluation import load_dataset  # noqa: E402
 
 
 def main() -> int:

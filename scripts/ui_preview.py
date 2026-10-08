@@ -1,6 +1,6 @@
 """Launch the UI with a pre-rendered example result, for screenshots and styling work.
 
-    SCAMANTICS_PROVIDER=mock python scripts/ui_preview.py [example-index] [port]
+    SCAMANTIQ_PROVIDER=mock python scripts/ui_preview.py [example-index] [port]
 """
 
 from __future__ import annotations

@@ -15,7 +15,7 @@ from .providers.base import extract_json_object
 from .schema import LLM_JSON_SCHEMA, AnalysisResult, LLMAnalysis
 from .validator import validate
 
-log = logging.getLogger("scamantics")
+log = logging.getLogger("scamantiq")
 
 MAX_MESSAGE_CHARS = 4000
 

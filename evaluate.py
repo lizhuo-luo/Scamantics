@@ -2,7 +2,7 @@
 
 Usage:
     python evaluate.py                       # uses provider from env (default: ollama)
-    python evaluate.py --provider groq       # any preset name from scamantics.config.PRESETS
+    python evaluate.py --provider groq       # any preset name from scamantiq.config.PRESETS
     python evaluate.py --limit 10 --out results/eval_groq.json
 """
 
@@ -14,9 +14,9 @@ import sys
 import time
 from pathlib import Path
 
-from scamantics.analyzer import Analyzer
-from scamantics.config import load_settings
-from scamantics.evaluation import check_dataset, evaluate, format_report, load_dataset
+from scamantiq.analyzer import Analyzer
+from scamantiq.config import load_settings
+from scamantiq.evaluation import check_dataset, evaluate, format_report, load_dataset
 
 
 def main(argv: list[str] | None = None) -> int:

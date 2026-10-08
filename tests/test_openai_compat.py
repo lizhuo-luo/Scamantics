@@ -8,10 +8,10 @@ from http.server import BaseHTTPRequestHandler, HTTPServer
 
 import pytest
 
-from scamantics.analyzer import Analyzer
-from scamantics.config import PRESETS, Settings, load_settings
-from scamantics.providers import build_provider
-from scamantics.providers.openai_compat import OpenAICompatProvider
+from scamantiq.analyzer import Analyzer
+from scamantiq.config import PRESETS, Settings, load_settings
+from scamantiq.providers import build_provider
+from scamantiq.providers.openai_compat import OpenAICompatProvider
 
 MSG = "Pay the $2.99 fee within 12 hours or the parcel will be returned."
 ANSWER = {
